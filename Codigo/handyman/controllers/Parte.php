@@ -55,7 +55,7 @@
             $data["domicilio"] = $domicilio->get_domicilio($data['producto']['iddomicilio']);
             $data["cliente"] = $cliente->get_cliente_id($data["parte"]['idcliente']);
             $data["usuario"] = $usuario->get_usuario($data["cliente"]['idusuario']);
-            if($producto->get_producto($id)){
+            if($parte->get_parte($id)){
                 require_once "views/parte/detalle.php";
             }
             else{

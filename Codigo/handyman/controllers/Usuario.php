@@ -53,8 +53,19 @@
                 $cliente = new Cliente_model();
                 $domicilio = new Domicilio_model();
                 $producto = new Producto_model();
+                $parte = new Parte_model();
+                $trabajo = new Trabajo_model();
                 $data["cliente"] = $cliente->get_cliente($id);
                 $data["domicilios"] = $domicilio->get_domicilios($data["cliente"]["idcliente"]);
+                $data["partes"] = $parte->get_partes($data["cliente"]["idcliente"]);
+
+                foreach($data["partes"] as $parteAux){
+                    if($parteAux['estado'] != 'LIBRE'){
+                        $trabajoAux = $trabajo->get_trabajo_parte($parteAux['idparte']);
+                        $trabajo->eliminarTrabajo($trabajoAux['idtrabajo']);
+                    }
+                    $parte->eliminarParte($parteAux['idparte']);
+                }
 
                 foreach($data["domicilios"] as $domicilioAux){
                     $data["productos"] = $producto->get_productos($domicilioAux["iddomicilio"]);
