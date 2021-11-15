@@ -1,10 +1,13 @@
 - [TÍTULO DE PROYECTO](#título-de-proyecto)
   - [Antecedentes](#antecedentes)
+    - [Nombre del proyecto](#nombre-del-proyecto)
 - [REQUISITOS](#requisitos)
   - [Requisitos funcionales](#requisitos-funcionales)
 - [ANÁLISIS Y DISEÑO WEB](#análisis-y-diseño-web)
   - [Prototipo web y boceto de la estructura](#prototipo-web-y-boceto-de-la-estructura)
   - [Guía de estilos](#guía-de-estilos)
+    - [Colores corporativos](#colores-corporativos)
+    - [Logo](#logo)
   - [Planificación de tareas](#planificación-de-tareas)
   - [Base de datos](#base-de-datos)
     - [Diseño Entidad Relación de la BBDD](#diseño-entidad-relación-de-la-bbdd)
@@ -33,33 +36,41 @@
 
 # TÍTULO DE PROYECTO
 ## Antecedentes
-Breve descripción del proyecto.
+### Nombre del proyecto
 
-Este proyecto muestra todos los pasos a seguir para recolectar, organizar, tratar y construir un
-portal Web empezando desde cero, para ...
+El proyecto se llamará Handyman. El nombre hace alusión al personaje de ficción Candyman. Teniendo en cuenta el significado de la palabra handyman (manitas) y el personaje en cuestión, quiero que se le asocie la facilidad de aparición de Candyman al nombrarlo con la rapidez de los técnicos para que asistan al cliente. Para ello será necesaria una aplicación óptima que permita a los distintos técnicos encontrar trabajos cercanos de manera sencilla y rápida.
 
 Se han utilizado distintos lenguajes de programación, como pueden ser PHP y JavaScript para
-su desarrollo, y para su diseño se ha hecho uso de Photoshop y de estilos CSS...
+su desarrollo, y para su diseño se ha hecho uso de Clip Studio y de estilos CSS...
 
 # REQUISITOS
 
-Se describen de forma concisa los requisitos funcionales de vuestra aplicación.
+Una empresa dedicada a la gestión y reparación de electrodomésticos varios busca mejorar la experiencia del cliente y los trabajadores. Para ello, encarga una aplicación con la que los usuarios podrán dar partes de averías de aquellos productos que tengan registrados.
 ## Requisitos funcionales
 
-Se enumeran todos lo requisitos funcionales de vuestra aplicación.
+- La aplicación deberá tener una parte visible para todo el público que acceda a esta. Aunque no esté registrado. Para ellos necesitaremos controlar el acceso a diferentes páginas según el rol del usuario.
 
-Además de los requisitos de vuestra aplicación hay que añadir los siguientes:
+- Los usuarios registrados pertenecerán a uno de los tres tipos de roles, dependiendo del tipo de usuario que sea podemos encontrar los siguientes.
 
+  - Cliente: podrá consultar sus datos personales (domicilios registrados, productos, etc). Este usuario podrá reportar averías de aquellos productos que ya tenga registrados. 
+  
+  - Técnico: podrá consultar sus datos personales y aceptar trabajos de reportes activos en ese momento.
+  
+  - Gestor: podrá consultar, modificar y eliminar los datos de cualquier usuario registrado en la página, así como registrarlos y añadir productos o domicilios a clientes que lo requieran. El gestor es el único que puede dar de alta a los demás usuarios. 
+
+- Si un cliente es eliminado, también deberán eliminarse aquellos datos asociados a este. Tales como productos, domicilios y partes. Si algunos de los partes fue aceptado por algún técnico, este trabajo también quedará inválido eliminándolo de la Base de datos
+
+- Si un técnico es eliminado, cualquier trabajo que haya realizado se borrará. Si hay algún trabajo sin acabar, este se borrará igual y el estado del parte del cliente pasará a "LIBRE", para que otros técnicos puedan aceptarlo. 
+  
 - Diseño responsive
-- Control de errores en formularios que deben incluir como mínimo un registro de usuario
+  
+- Control de errores en formularios
   - DNI
   - Teléfono
   - Mail
-  - Fecha de nacimiento
   - Teléfono 
   - Dirección
-  - Provincia (elegible desde un desplegable)
-  - Población (se rellenará según los datos de la provincia seleccionada.)
+  
 - Acceso restringido a usuarios no registrados  
 
 # ANÁLISIS Y DISEÑO WEB
@@ -72,7 +83,23 @@ Debe contener todo el itinerario de vuestra web. Todas las páginas y el hilo de
 Mookup del proyecto. Deben coincidir el número de bocetos con el número de pantallas que hayais mostrado en el mapa web
 ## Guía de estilos
 
-Debemos señalar los colores corporativos y el diseño del logo. Justificando su uso.
+### Colores corporativos
+
+Los colores corporativos de Handyman son el morado y amarillo. La elección de estos colores, a parte de gusto personal al ver cómo combinan, es por los siguientes motivos:
+
+- Morado: escogí el morado ya que es un color que transmite elegancia y seriedad. También pienso que puede equilibrar el color amarillo que también presenta la empresa para que no sea tan intrusivo a la vista.
+- Amarillo: el color amarillo es escogido para transmitir alegría, optimismo y cercanía al cliente. 
+
+### Logo
+
+El logo de la empresa son dos manos ofreciendo una herramienta a modo de caramelo. Volviendo al tema de la elección del nombre "handyman", expliqué que era una referencia a la leyenda urbana "candyman", candy (caramelo). 
+
+Es un logo que, al igual que el amarillo, transmite cercanía y ofrece ayuda al cliente. La empresa se dedica a la reparación de electrodomésticos por lo que, una llave inglesa, es símbolo indiscutible de esto. 
+
+El logo fue diseñado con Clip Studio Paint, un editor de imágenes profesional que permite la creación de imágenes vectoriales.
+
+![Logo](Imagenes/handymanIcon.png)
+
 ## Planificación de tareas
 
 Con un diagrama de Gantt, planificamos el desarrollo del proyecto. Pautando qué vamos hacer y cuándo lo vamos a finalizar.
