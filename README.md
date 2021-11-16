@@ -102,7 +102,7 @@ El logo fue diseñado con Clip Studio Paint, un editor de imágenes profesional 
 
 ## Planificación de tareas
 
-Con un diagrama de Gantt, planificamos el desarrollo del proyecto. Pautando qué vamos hacer y cuándo lo vamos a finalizar.
+![DiagramaGantt](Imagenes/handymanGantt.png)
 
 ## Base de datos
 ### Diseño Entidad Relación de la BBDD
@@ -247,7 +247,30 @@ Descripción de todas las herramientas que se han usado para el desarrollo del p
 > 
 > Breve descripción de las características y plugins que hemos usado 
 > 
-
+> ## Bootstrap
+> 
+> Descripción de Bootstrap
+> 
+> ### Características
+> 
+> Breve descripción de las características y plugins que hemos usado 
+> 
+> ## WAMP
+> 
+> Descripción de WAMP
+> 
+> ### Características
+> 
+> Breve descripción de las características y plugins que hemos usado 
+> 
+> ## CLIP STUDIO
+> 
+> Descripción de CLIP STUDIO
+> 
+> ### Características
+> 
+> Breve descripción de las características y plugins que hemos usado 
+> 
 # LENGUAJES
 
 Descripción de los lenguajes y frameworks utilizados para el desarrollo del proyecto. Por ejemplo:
@@ -255,6 +278,30 @@ Descripción de los lenguajes y frameworks utilizados para el desarrollo del pro
 > ## HTML
 > 
 > Descripción de qué es HTML
+> 
+> ### Características
+> 
+> Breve descripción de sus características  
+> 
+> ## CSS
+> 
+> Descripción de qué es CSS
+> 
+> ### Características
+> 
+> Breve descripción de sus características  
+> 
+> ## JAVASCRIPT
+> 
+> Descripción de qué es JAVASCRIPT
+> 
+> ### Características
+> 
+> Breve descripción de sus características  
+> 
+> ## PHP
+> 
+> Descripción de qué es PHP
 > 
 > ### Características
 > 
