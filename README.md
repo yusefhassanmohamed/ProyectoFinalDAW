@@ -107,9 +107,7 @@ El logo fue diseñado con Clip Studio Paint, un editor de imágenes profesional 
 ## Base de datos
 ### Diseño Entidad Relación de la BBDD
 
-Realizamos el Esquema Entidad Relación de la BBDD de nuestra aplicación.
-
-Se debe mostrar el diseño relacional. No lo que os muestra la aplicación MySQL Workbench o el gestor que usais. Quiero los diagrmas E-R con cajas para las entidades y rombos para las relaciones. Se deben tener en cuenta las cardinalidades.
+![DiseñoER](Imagenes/modeloER.png)
 ### Modelo relacional BBDD
 
 Se muestra el diseño de la BBDD según el GUI que esteís usando. Deben aparecer todas las entidades en la 3FN, los campos de las tablas y las cardinalidades. 
@@ -241,35 +239,31 @@ Descripción de todas las herramientas que se han usado para el desarrollo del p
 > Para la realización del proyecto se han empleado las siguientes herramientas:
 > ## Visual Studio
 > 
-> Descripción de Visual Studio
+> Es un editor de código fuente desarrollado por Microsoft para Windows , Linux y macOS . Incluye soporte para depuración , control de Git integrado, resaltado de sintaxis , finalización de código inteligente , fragmentos de código y refactorización de código . Es gratuito y de código abierto.
 > 
 > ### Características
 > 
-> Breve descripción de las características y plugins que hemos usado 
+> Control de GIT para subir y actualizar el repositorio de GitHub
 > 
 > ## Bootstrap
 > 
-> Descripción de Bootstrap
+> Bootstrap es un framework CSS y Javascript diseñado para la creación de interfaces limpias y con un diseño responsive. Además, ofrece un amplio abanico de herramientas y funciones, de manera que los usuarios pueden crear prácticamente cualquier tipo de sitio web haciendo uso de los mismos
 > 
 > ### Características
 > 
-> Breve descripción de las características y plugins que hemos usado 
+> Uso de clases para que la página sea responsive.
 > 
 > ## WAMP
 > 
-> Descripción de WAMP
-> 
-> ### Características
-> 
-> Breve descripción de las características y plugins que hemos usado 
+> WAMP es un acrónimo que significa Windows, Apache, MySQL y PHP. Es un stack o conjunto de soluciones de software que significa que cuando instalas WAMP, estás instalando Apache, MySQL y PHP en tu sistema operativo (Windows en el caso de WAMP)
 > 
 > ## CLIP STUDIO
 > 
-> Descripción de CLIP STUDIO
+> Clip Studio Paint (antiguamente Manga Studio 5 o ComicStudio en Japón) es una aplicación de ilustración para Mac OS X y Microsoft Windows desarrollado por Celsys para la creación digital de cómics e ilustraciones, entre otras cosas.
 > 
 > ### Características
 > 
-> Breve descripción de las características y plugins que hemos usado 
+> Dibujo vectorial para la creación del logo.
 > 
 # LENGUAJES
 
@@ -277,35 +271,35 @@ Descripción de los lenguajes y frameworks utilizados para el desarrollo del pro
 
 > ## HTML
 > 
-> Descripción de qué es HTML
+> HTML es un lenguaje de marcado que se utiliza para el desarrollo de páginas de Internet.
 > 
 > ### Características
 > 
-> Breve descripción de sus características  
+> Utilizado en las vistas de nuestra página WEB.
 > 
 > ## CSS
 > 
-> Descripción de qué es CSS
+> CSS son las siglas de “Cascading Style Sheets” (hojas de estilo en cascada). CSS es un lenguaje para la composición y estructuración de páginas web (HTML o XML)
 > 
 > ### Características
 > 
-> Breve descripción de sus características  
+> Dar formato y color a la página para que esta sea más accesible y vistosa.
 > 
 > ## JAVASCRIPT
 > 
-> Descripción de qué es JAVASCRIPT
+> JavaScript (abreviado comúnmente JS) es un lenguaje de programación interpretado, dialecto del estándar ECMAScript. Se define como orientado a objetos,​ basado en prototipos, imperativo, débilmente tipado y dinámico.
 > 
 > ### Características
 > 
-> Breve descripción de sus características  
+> Uso exclusivo para la validación de datos en los formularios.
 > 
 > ## PHP
 > 
-> Descripción de qué es PHP
+> PHP es un lenguaje de programación destinado a desarrollar aplicaciones para la web y crear páginas web, favoreciendo la conexión entre los servidores y la interfaz de usuario.
 > 
 > ### Características
 > 
-> Breve descripción de sus características  
+> Con PHP desarrollaremos el Backend completamente y determinadas partes del front.
 > 
 
 # PRODUCTO
