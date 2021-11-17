@@ -13,6 +13,14 @@
     - [Diseño Entidad Relación de la BBDD](#diseño-entidad-relación-de-la-bbdd)
     - [Modelo relacional BBDD](#modelo-relacional-bbdd)
     - [Script de creación BBDD](#script-de-creación-bbdd)
+      - [USUARIO:](#usuario)
+      - [CLIENTE:](#cliente)
+      - [TÉCNICO:](#técnico)
+      - [GESTOR:](#gestor)
+      - [DOMICILIO:](#domicilio)
+      - [PRODUCTO:](#producto)
+      - [PARTE:](#parte)
+      - [TRABAJO:](#trabajo)
     - [Consultas](#consultas)
   - [Validación de formularios](#validación-de-formularios)
   - [Proceso de carga](#proceso-de-carga)
@@ -30,7 +38,7 @@
 - [DESPLIEGUE](#despliegue)
 - [HERRAMIENTAS](#herramientas)
 - [LENGUAJES](#lenguajes)
-- [PRODUCTO](#producto)
+- [PRODUCTO](#producto-1)
   - [Página de Inicio](#página-de-inicio)
 - [BIBLIOGRAFÍA](#bibliografía)
 
@@ -108,12 +116,133 @@ El logo fue diseñado con Clip Studio Paint, un editor de imágenes profesional 
 ### Diseño Entidad Relación de la BBDD
 
 ![DiseñoER](Imagenes/modeloER.png)
+
 ### Modelo relacional BBDD
 
-Se muestra el diseño de la BBDD según el GUI que esteís usando. Deben aparecer todas las entidades en la 3FN, los campos de las tablas y las cardinalidades. 
+![DiseñoER](Imagenes/ModeloRelacional.png)
+
 ### Script de creación BBDD
 
-Scrip de creación de las BBDD, sin los datos. Cada una de las tablas con sus claves referenciadas. 
+#### USUARIO:
+
+CREATE TABLE `usuario` (
+  `idusuario` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(45) NOT NULL,
+  `apellidos` varchar(45) DEFAULT NULL,
+  `username` varchar(20) NOT NULL,
+  `password` varchar(45) NOT NULL,
+  `email` varchar(45) NOT NULL,
+  `telefono` int(11) DEFAULT NULL,
+  `dni` varchar(11) NOT NULL,
+  `rol` varchar(10) NOT NULL,
+  PRIMARY KEY (`idusuario`),
+  UNIQUE KEY `idusuario_UNIQUE` (`idusuario`),
+  UNIQUE KEY `username_UNIQUE` (`username`),
+  UNIQUE KEY `email_UNIQUE` (`email`),
+  UNIQUE KEY `dni_UNIQUE` (`dni`)
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
+
+#### CLIENTE:
+
+CREATE TABLE `cliente` (
+  `idcliente` int(11) NOT NULL AUTO_INCREMENT,
+  `fecha_registro` date NOT NULL,
+  `idusuario` int(11) NOT NULL,
+  PRIMARY KEY (`idcliente`),
+  UNIQUE KEY `idcliente_UNIQUE` (`idcliente`),
+  UNIQUE KEY `idusuario_UNIQUE` (`idusuario`),
+  KEY `idusuario_idx` (`idusuario`),
+  CONSTRAINT `idusuarioC` FOREIGN KEY (`idusuario`) REFERENCES `usuario` (`idusuario`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+
+#### TÉCNICO:
+
+CREATE TABLE `tecnico` (
+  `idtecnico` int(11) NOT NULL AUTO_INCREMENT,
+  `numero_identificacion` int(11) NOT NULL,
+  `idusuario` int(11) NOT NULL,
+  PRIMARY KEY (`idtecnico`),
+  UNIQUE KEY `idtecnico_UNIQUE` (`idtecnico`),
+  UNIQUE KEY `numero_identificacion_UNIQUE` (`numero_identificacion`),
+  UNIQUE KEY `idusuario_UNIQUE` (`idusuario`),
+  CONSTRAINT `idusuarioT` FOREIGN KEY (`idusuario`) REFERENCES `usuario` (`idusuario`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+#### GESTOR:
+
+CREATE TABLE `gestor` (
+  `idgestor` int(11) NOT NULL AUTO_INCREMENT,
+  `numero_sucursal` int(11) NOT NULL,
+  `idusuario` int(11) NOT NULL,
+  PRIMARY KEY (`idgestor`),
+  UNIQUE KEY `idgestor_UNIQUE` (`idgestor`),
+  KEY `idusuario_idx` (`idusuario`),
+  CONSTRAINT `idusuarioG` FOREIGN KEY (`idusuario`) REFERENCES `usuario` (`idusuario`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+#### DOMICILIO:
+
+CREATE TABLE `domicilio` (
+  `iddomicilio` int(11) NOT NULL AUTO_INCREMENT,
+  `calle` varchar(45) NOT NULL,
+  `numero` int(11) NOT NULL,
+  `piso` int(11) DEFAULT NULL,
+  `puerta` varchar(1) DEFAULT NULL,
+  `idcliente` int(11) NOT NULL,
+  PRIMARY KEY (`iddomicilio`),
+  UNIQUE KEY `iddomicilio_UNIQUE` (`iddomicilio`),
+  KEY `idcliente_idx` (`idcliente`),
+  CONSTRAINT `idclienteD` FOREIGN KEY (`idcliente`) REFERENCES `cliente` (`idcliente`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+
+#### PRODUCTO: 
+
+CREATE TABLE `producto` (
+  `idproducto` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(20) NOT NULL,
+  `marca` varchar(20) NOT NULL,
+  `fecha_registro` date NOT NULL,
+  `iddomicilio` int(11) NOT NULL,
+  PRIMARY KEY (`idproducto`),
+  UNIQUE KEY `idproducto_UNIQUE` (`idproducto`),
+  KEY `iddomicilio_idx` (`iddomicilio`),
+  CONSTRAINT `iddomicilioP` FOREIGN KEY (`iddomicilio`) REFERENCES `domicilio` (`iddomicilio`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=latin1;
+
+#### PARTE: 
+
+CREATE TABLE `parte` (
+  `idparte` int(11) NOT NULL AUTO_INCREMENT,
+  `descripcion` longtext NOT NULL,
+  `fecha_parte` date NOT NULL,
+  `idcliente` int(11) NOT NULL,
+  `idproducto` int(11) NOT NULL,
+  `asunto` varchar(30) NOT NULL,
+  `estado` varchar(10) NOT NULL,
+  PRIMARY KEY (`idparte`),
+  UNIQUE KEY `idparte_UNIQUE` (`idparte`),
+  KEY `idcliente_idx` (`idcliente`),
+  KEY `idproducto_idx` (`idproducto`),
+  CONSTRAINT `idclienteP` FOREIGN KEY (`idcliente`) REFERENCES `cliente` (`idcliente`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `idproductoP` FOREIGN KEY (`idproducto`) REFERENCES `producto` (`idproducto`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
+#### TRABAJO:
+
+CREATE TABLE `trabajo` (
+  `idtrabajo` int(11) NOT NULL AUTO_INCREMENT,
+  `fecha_aceptado` date NOT NULL,
+  `idtecnico` int(11) NOT NULL,
+  `idparte` int(11) NOT NULL,
+  `fecha_terminado` date DEFAULT NULL,
+  `observaciones` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`idtrabajo`),
+  UNIQUE KEY `idtrabajo_UNIQUE` (`idtrabajo`),
+  KEY `idtecnico_idx` (`idtecnico`),
+  KEY `idparte_idx` (`idparte`),
+  CONSTRAINT `idparteT` FOREIGN KEY (`idparte`) REFERENCES `parte` (`idparte`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `idtecnicoT` FOREIGN KEY (`idtecnico`) REFERENCES `tecnico` (`idtecnico`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 El lector debe comprender lo que está leyendo, no se pone el script sin más, hay que explicarlo.
 
@@ -313,7 +442,15 @@ Se muestran diferentes pantallas que constituyen el desarrollo final de la aplic
 Y lo vamos realizando con todas las pantallas.
 # BIBLIOGRAFÍA
 
-Incluye la bibliografía y webgrafía que hayas empleado para el desarrollo de tu proyecto.
+Solución para casi todos los errores y dudas que se me han presentado:
+https://es.stackoverflow.com/
+
+Documentación para el uso de Bootstrap:
+https://getbootstrap.com/
+
+Documentación para programar en MVC:
+https://www.youtube.com/channel/UCOD6LXgeBoeiUZTsPLdG-0g
+
 
 
 
