@@ -83,12 +83,33 @@ Una empresa dedicada a la gestión y reparación de electrodomésticos varios bu
 
 # ANÁLISIS Y DISEÑO WEB
 
-Breve descripción del mapa web. Se debe incluir la imagen del mapa web de vuestro proyecto.
+Mapa web: 
+Tenemos dos páginas comunes a todos los usuarios, que son la página de inicio y la de información sobre la empresa.
+Según el tipo de usuario, tendrá acceso a unas páginas u otras controlando el acceso y cambiando la barra de navegación.
 
-Debe contener todo el itinerario de vuestra web. Todas las páginas y el hilo de navegación
+![Mapaweb](Imagenes/mapaWEB.png)
+
 ## Prototipo web y boceto de la estructura
 
-Mookup del proyecto. Deben coincidir el número de bocetos con el número de pantallas que hayais mostrado en el mapa web
+![Template](Imagenes/mockupPartials.png)
+![Home](Imagenes/home.png)
+![Sobrenosotros](Imagenes/sobreNosotros.png)
+![GestorUsuarios](Imagenes/gestionUsuarios.png)
+![GestorDetalleCliente](Imagenes/detalleCliente.png)
+![GestorDetalleGestor](Imagenes/detalleGestor.png)
+![GestorDetalleTecnico](Imagenes/detalleTecnico.png)
+![GestorDetalleDomicilio](Imagenes/detalleDomicilio.png)
+![GestorDetalleProducto](Imagenes/detalleProducto.png)
+![GestorDetalleParte](Imagenes/detalleParte.png)
+![GestorReportes](Imagenes/tecnicoReportes.png)
+![ClienteProductos](Imagenes/clienteProductos.png)
+![ClienteReportar](Imagenes/clienteReportar.png)
+![ClienteReportes](Imagenes/clienteReportes.png)
+![TecnicoPartes](Imagenes/tecnicoReportes.png)
+![TecnicoTrabajos](Imagenes/tecnicoTrabajos.png)
+![TecnicoDetalleTrabajo](Imagenes/tecnicoDetalleTrabajo.png)
+![FormularioRegistro](Imagenes/registro.png)
+![FormularioModificar](Imagenes/modificar.png)
 ## Guía de estilos
 
 ### Colores corporativos
@@ -244,7 +265,6 @@ CREATE TABLE `trabajo` (
   CONSTRAINT `idtecnicoT` FOREIGN KEY (`idtecnico`) REFERENCES `tecnico` (`idtecnico`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
-El lector debe comprender lo que está leyendo, no se pone el script sin más, hay que explicarlo.
 
 ### Consultas 
 
@@ -289,17 +309,22 @@ Breve explicación de lo que tenemos contenido en cada directorio. Por ejemplo:
 
 En base al apartado [Prototipo web y boceto de la estructura](#prototipo-web-y-boceto-de-la-estructura) describimos el contenido de la interface de nuestra aplicación. Por ejemplo:
 
-> El sitio web consta de cinco partes fundamentales. Esta estructura es común en todas las páginas que forman el sitio web.
+> El sitio web consta de cuatro partes fundamentales. Esta estructura es común en todas las páginas que forman el sitio web.
 > 
-> **Cabecera**: Contiene el logo de la empresa, que está formado por las siglas “ostargi” cruzadas por una “O” mayúscula. Además, en la parte superior de la cabecera, está el menú de selección de idioma.
+> **Cabecera**: Contiene el logo de la empresa y el nombre. En este apartado encontramos también, a la derecha, el nombre del usuario que estuviera registrado o, en su defecto, la palabra 'login' para los usuarios no logueados.
 > 
-> **Panel horizontal**: Esta ubicado justo debajo de la cabecera. Contiene los enlaces a las páginas: inicio, como llegar, contactar
+> **Barra de navegación**: Esta ubicada a la izquierda de la página, como desplegable para no entorpecer al contenido central. Contiene los enlaces a las páginas: home, sobre nosotros y login/logout. Dependiendo del rol del usuario logueado, contendrá, además, los enlaces hacia las demás páginas. 
+> En el caso de cliente: productos y reportes.
+> En el caso de Técnico: reportes y trabajos.
+> En el caso de Gestor: usuarios y reportes.
+> 
+>**Contenido central**: Irá variando según en qué página estemos. Es la única parte "dinámica" de la página.
+> 
+>**Footer**: Se encuentra al final de la página, debajo del contenido central. En él podemos encontrar datos como el contacto, horario, ubicación y un link hacia la página "sobre nosotros".
 
 ### Estructura gráfica de la interface
 
-Mostramos la estructura gráfica de nuestro diseño. Por ejemplo.
-
-![EstructuraInterface](Imagenes/EstructuraInterface.png)
+![EstructuraInterface](Imagenes/mockupPartials.png)
 
 # IMPLEMENTACIÓN
 
