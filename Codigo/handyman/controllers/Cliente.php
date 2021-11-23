@@ -5,6 +5,7 @@
             require_once "models/Cliente.php";
             require_once "models/Domicilio.php";
             require_once "models/Producto.php";
+            require_once "models/Parte.php";
         }
 
         public function mostrar(){
@@ -51,6 +52,54 @@
                 $resultado = true;
             } 
             return $resultado;
+        }
+
+        public function mostrarProductos($id){
+            $usuario = new Usuario_model();
+            $data["usuario"] = $usuario->get_usuario($id);
+            $cliente = new Cliente_model();
+            $data["cliente"] = $cliente->get_cliente($id);
+            $domicilio = new Domicilio_model();
+            $data["domicilios"] = $domicilio->get_domicilios($data["cliente"]['idcliente']);
+            $producto = new Producto_model();
+            $data["productos"] = [];
+            $dataAux["productosAux"] = [];
+            foreach($data['domicilios'] as $domicilioAux){
+                array_push($dataAux["productosAux"], $producto->get_productos($domicilioAux['iddomicilio']));  
+            }
+            foreach($dataAux["productosAux"] as $productoArrayAux){
+                foreach($productoArrayAux as $productoAux){
+                    array_push($data["productos"], $productoAux);
+                }   
+            }
+            /* var_dump($data["productos"]); */
+            
+            require_once "views/cliente/productos.php";
+        }
+
+        public function mostrarPartes($idusuario){
+            $usuario = new Usuario_model();
+            $data["usuario"] = $usuario->get_usuario($idusuario);
+            $cliente = new Cliente_model();
+            $data["cliente"] = $cliente->get_cliente($idusuario);
+            $parte = new Parte_model();
+            $data["partes"] = $parte->get_partes($data["cliente"]['idcliente']);
+            $producto = new Producto_model();
+            $domicilio = new Domicilio_model();
+            $data["productos"] = [];
+            $data["domicilios"] = [];
+            foreach($data["partes"] as $parteAux){
+                $productoAux = $producto->get_producto($parteAux['idproducto']);
+                $domicilioAux = $domicilio->get_domicilio($productoAux['iddomicilio']);
+                array_push($data["productos"], $productoAux);
+
+                //Evitamos repetir datos con la funcion "in_array" y añadimos los domicilios
+                if(!in_array($domicilioAux, $data["domicilios"], true)){
+                    array_push($data["domicilios"], $domicilioAux);
+                }
+            }
+            
+            require_once "views/cliente/reportes.php";
         }
 
         

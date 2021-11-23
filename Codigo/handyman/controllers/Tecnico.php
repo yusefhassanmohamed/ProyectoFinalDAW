@@ -84,5 +84,39 @@
             require_once "views/tecnico/trabajos.php";
         }
 
+        public function mostrarPartes(){
+            $parte = new Parte_model();
+            $data["partes"] = $parte->get_all_partes();
+            $cliente = new Cliente_model();
+            $data["clientes"] = [];
+            $usuario = new Usuario_model();
+            $data["usuarios"] = [];
+            $producto = new Producto_model();
+            $domicilio = new Domicilio_model();
+            $data["productos"] = [];
+            $data["domicilios"] = [];
+            foreach($data["partes"] as $parteAux){
+                //datos clientes
+                $idcliente = $parteAux['idcliente'];
+                $clienteAux = $cliente->get_cliente_id($idcliente);
+                //Controlo que no se repitan los datos
+                if(!in_array($clienteAux, $data["clientes"], true)){
+                    array_push($data["clientes"], $clienteAux);
+                    //datos usuarios
+                    $usuarioAux = $usuario->get_usuario($clienteAux['idusuario']);
+                    array_push($data['usuarios'], $usuarioAux);
+                    
+                }
+                $productoAux = $producto->get_producto($parteAux['idproducto']);
+                $domicilioAux = $domicilio->get_domicilio($productoAux['iddomicilio']);
+                array_push($data["productos"], $productoAux);
+                //Evitamos repetir datos con la funcion "in_array" y añadimos los domicilios
+                if(!in_array($domicilioAux, $data["domicilios"], true)){
+                    array_push($data["domicilios"], $domicilioAux);
+                }
+            }
+            require_once "views/tecnico/reportes.php";
+        }
+
         
     }

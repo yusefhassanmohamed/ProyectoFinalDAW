@@ -12,11 +12,11 @@ class Parte_model{
         return $resultado;
     }
 
-    public function insertarParte($calle, $numero, $piso, $puerta, $idcliente){
-        $resultado = $this->db->query("INSERT INTO parte (calle, numero, piso, puerta, idcliente)
-        VALUES ('$calle', '$numero', '$piso', '$puerta', '$idcliente')");
+    public function insertarParte($idproducto, $idcliente, $asunto, $descripcion, $fecha_parte){
+        $resultado = $this->db->query("INSERT INTO parte (idproducto, idcliente, asunto, descripcion, fecha_parte, estado)
+        VALUES ('$idproducto', '$idcliente', '$asunto', '$descripcion', '$fecha_parte', 'LIBRE')");
         
-        return $idcliente;
+        return $resultado;
     }
 
     public function get_parte($id){
@@ -25,6 +25,13 @@ class Parte_model{
         $row = $resultado->fetch_assoc();
 
         return $row;
+    }
+
+    public function get_parte_producto($idproducto){
+        $sql = "SELECT * FROM parte WHERE idproducto='$idproducto'";
+        $resultado = $this->db->query($sql);
+
+        return $resultado;
     }
 
     public function get_partes($idcliente){

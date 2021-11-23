@@ -1,8 +1,17 @@
 <?php include 'views/partials/nav.php' ?>
 <div class="container">
     <div class="row">
-        <div class="col text-center"><h3><b>TÉCNICO: <?php echo $data["usuario"]["nombre"].' '.$data["usuario"]["apellidos"]; ?></b></h3>  </div>
+        <div class="col text-center"><h3><b>"<?php echo $data["parte"]["idparte"]; ?>" ASUNTO: <?php echo strtoupper($data["parte"]["asunto"]); ?></b></h3>  </div>
     </div>
+    <?php
+        if($_SESSION['rol']=='TECNICO'):
+    ?>
+    <div class="row">
+        <div class="col text-center"><h5><a href="index.php?c=Trabajo&a=insertar&id=<?php echo $data["parte"]["idparte"]; ?>"><i class="fas fa-check-circle m-2 p-2">Aceptar</i></a></h5></div>
+    </div>
+    <?php
+        else:
+    ?>
     <div class="row">
         <div class="col text-center"><h5><a href="index.php?c=Parte&a=modificar&id=<?php echo $data["parte"]["idparte"]; ?>"><i class="fas fa-edit m-2 p-2">Modificar</i></a></h5></div>
         <div class="col text-center"><h5><a data-bs-toggle="modal" data-bs-target="#confirmParte"><i class="fas fa-trash-alt m-2 p-2">Eliminar</i></a></h5></div>
@@ -27,6 +36,9 @@
         </div>
         
     </div>
+    <?php
+        endif;
+    ?>
     <div class="row">
         <div class="col"><h4>Datos de usuario</h4></div>
     </div>

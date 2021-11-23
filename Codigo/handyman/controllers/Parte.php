@@ -24,24 +24,55 @@
         }
 
         public function nuevoParte($id){
+            $producto = new Producto_model();
+            $data['producto'] = $producto->get_producto($id);
             require_once "views/parte/nuevo.php";
         }
 
         public function insertar($id){
             /* Recojo datos */
-            $nombre = $_POST['nombre'];
-            $marca = $_POST['marca'];
-            $fecha_registro = date('Y-m-d');
-            $iddomicilio = $id;
-
+            $producto = new Producto_model();
+            $parte = new Parte_model();
             $domicilio = new Domicilio_model();
-            $data['domicilio'] = $domicilio->get_domicilio($iddomicilio);
+            $cliente = new Cliente_model();
+            $idusuario = $_SESSION['idusuario'];
+            $asunto = $_POST['asunto'];
+            $descripcion = $_POST['descripcion'];
+            $fecha_parte = date('Y-m-d');
+            $iddomicilio = $id;
+            $productoAux = $producto->get_productoResult($id);
+
+            //Comprobamos que el producto exista
+            if(mysqli_num_rows($productoAux) != 0){
+                $data['producto'] = $producto->get_producto($id);
+                $data['domicilio'] = $domicilio->get_domicilio($data['producto']['iddomicilio']);
+                $data['cliente'] = $cliente->get_cliente_id($data['domicilio']['idcliente']);
+                //Control de url para que solo el cliente adecuado pueda reportar, y no haya ningún parte
+                if($data['cliente']['idusuario'] == $idusuario){
+                    $parteAux = $parte->get_parte_producto($id);
+                    if(mysqli_num_rows($parteAux) == 0){
+                        /* Inserto datos */
+                        $parte->insertarParte($id, $data['cliente']['idcliente'], $asunto, $descripcion, $fecha_parte);
+                        header('Location: index.php?c=Cliente&a=mostrarProductos&id='.$_SESSION['idusuario']);
+                    }else{
+                        header('Location: index.php?c=Cliente&a=mostrarProductos&id='.$_SESSION['idusuario']);
+                    }
+
+                }else{
+                    header('Location: index.php?c=Cliente&a=mostrarProductos&id='.$_SESSION['idusuario']);
+                }
+            }else{
+                header('Location: index.php?c=Cliente&a=mostrarProductos&id='.$_SESSION['idusuario']);
+            }
+
+            
+            
 
             /* Inserto datos */
-            $producto = new Producto_model();
+            /* $producto = new Producto_model();
             $producto->insertarProducto($nombre, $marca, $fecha_registro, $iddomicilio);
 
-            header('Location: index.php?c=Domicilio&a=mostrarDomicilio&id='.$iddomicilio);
+            header('Location: index.php?c=Domicilio&a=mostrarDomicilio&id='.$iddomicilio); */
         }
 
         public function mostrarParte($id){
@@ -75,11 +106,13 @@
                 if($data['parte']['estado'] != 'TERMINADO'){
                     $trabajo->eliminarTrabajo($data['trabajo']['idtrabajo']);
                     $parte->eliminarParte($id);
-                    header('Location: index.php?c=Usuario&a=mostrarUsuario&id='.$data['cliente']['idusuario']);
+                    header('Location: index.php?c=Main');
+                }else{
+                    header('Location: index.php?c=Main');
                 }
             }
             else {
-                header('Location: index.php?c=Usuario&a=mostrar');
+                header('Location: index.php?c=Main');
             }
         }
     }

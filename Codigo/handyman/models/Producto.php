@@ -32,6 +32,13 @@ class Producto_model{
         return $row;
     }
 
+    public function get_productoResult($id){
+        $sql = "SELECT * FROM producto WHERE idproducto='$id' LIMIT 1";
+        $resultado = $this->db->query($sql);
+
+        return $resultado;
+    }
+
     public function eliminarProducto($id){
         $resultado = $this->db->query("DELETE FROM producto WHERE idproducto='$id'");
     }

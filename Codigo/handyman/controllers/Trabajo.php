@@ -28,8 +28,11 @@
             /* Inserto datos */
             $trabajo = new Trabajo_model();
             $trabajo->insertarTrabajo($fecha_inicio, $data['tecnico']['idtecnico'], $idparte);
+            if($trabajo->get_trabajo_parte($idparte)){
+                $parte->modificar_parte_estado($idparte, 'OCUPADO');
+            }
 
-            header('Location: index.php?c=Tecnico&a=mostrarTrabajos&id='.$data['tecnico']['idtecnico']);
+            header('Location: index.php?c=Tecnico&a=mostrarTrabajos&id='.$data['tecnico']['idusuario']);
         }
 
         public function mostrarParte($id){
@@ -53,11 +56,14 @@
         }
 
         public function eliminar($id){
-            $producto = new Producto_model();
-            $data['domicilio'] = $producto->get_producto($id);
-            if($producto->get_producto($id)){
-                $producto->eliminarProducto($id);
-                header('Location: index.php?c=Domicilio&a=mostrarDomicilio&id='.$data['domicilio']['iddomicilio']);
+            $trabajo = new Trabajo_model();
+            $data['trabajo'] = $trabajo->get_trabajo($id);
+            $parte = new Parte_model();
+            $data['parte'] = $parte->get_parte($data['trabajo']['idparte']);
+            if($data['parte']['estado']=='OCUPADO'){
+                $trabajo->eliminarTrabajo($id);
+                $parte->modificar_parte_estado($data['parte']['idparte'], 'LIBRE');
+                header('Location: index.php?c=Tecnico&a=mostrarTrabajos&id='.$_SESSION['idusuario']);
             }
         }
     }
