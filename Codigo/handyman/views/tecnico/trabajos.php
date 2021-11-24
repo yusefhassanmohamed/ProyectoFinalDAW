@@ -7,7 +7,7 @@
                         <th scope="col">#</th>
                         <th scope="col">Nombre Cliente </th>
                         <th scope="col">Producto </th>
-                        <th scope="col">Descripcion </th>
+                        <th scope="col">Asunto </th>
                         <th scope="col">fecha de inicio</th>
                         <th scope="col">Acción</th>
                     </tr>
@@ -57,7 +57,7 @@
                                         $parte = $parteAux;
                                     }
                                 }
-                                echo $parte['descripcion']; 
+                                echo $parte['asunto']; 
                             ?>
                         </td>
                         <td><?php echo $trabajo['fecha_aceptado']; ?></td>
