@@ -1,7 +1,8 @@
 <?php
     class Conectar{
+        
         public static function conexion(){
-            $conexion = new mysqli("localhost", "root", "root", "handyman");
+            $conexion = new mysqli("192.168.0.113", "root", "root", "handyman");
             return $conexion;
         }
     }
