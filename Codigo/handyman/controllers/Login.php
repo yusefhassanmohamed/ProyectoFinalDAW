@@ -12,8 +12,7 @@ class LoginController{
     }
 
     function iniciar(){
-        echo 'hola';
-        /* if(isset($_POST['submit'])){
+        if(isset($_POST['submit'])){
             $username = $_POST['username'];
             $password = $_POST['password'];
     
@@ -38,7 +37,7 @@ class LoginController{
                     header('location: index.php?c=Login&a=index');
                 }
             }
-        } */
+        }
         
     }
 
