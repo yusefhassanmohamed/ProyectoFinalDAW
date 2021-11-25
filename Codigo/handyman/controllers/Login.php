@@ -21,7 +21,8 @@ class LoginController{
                 header('location: index.php?c=Login&a=index');
             }else{
                 $user = new Login;
-                if($user->getUser($username,$password)){
+                echo 'Hola';
+                /* if($user->getUser($username,$password)){
                     //Con una consulta recojo los valores del usuario y los guardo en la variable "datosUsuario"
                     $datosUsuario = mysqli_fetch_assoc($user->getDatos($username,$password));
                     //metodo de php que te permite controlar sesiones
@@ -35,7 +36,7 @@ class LoginController{
                     $_SESSION['log'] = false;
                     $_SESSION['rol'] = 'null';
                     header('location: index.php?c=Login&a=index');
-                }
+                } */
             }
         }
         
