@@ -12,7 +12,8 @@ class LoginController{
     }
 
     function iniciar(){
-        if(isset($_POST['submit'])){
+        echo 'hola';
+        /* if(isset($_POST['submit'])){
             $username = $_POST['username'];
             $password = $_POST['password'];
     
@@ -21,8 +22,7 @@ class LoginController{
                 header('location: index.php?c=Login&a=index');
             }else{
                 $user = new Login;
-                echo 'Hola';
-                /* if($user->getUser($username,$password)){
+                if($user->getUser($username,$password)){
                     //Con una consulta recojo los valores del usuario y los guardo en la variable "datosUsuario"
                     $datosUsuario = mysqli_fetch_assoc($user->getDatos($username,$password));
                     //metodo de php que te permite controlar sesiones
@@ -31,14 +31,14 @@ class LoginController{
                         $_SESSION[$campo] = $valor;
                     }
                     $_SESSION['log'] = true;
-                    header('location: index.php&c=Main');
+                    header('location: index.php?c=Main');
                 }else{
                     $_SESSION['log'] = false;
                     $_SESSION['rol'] = 'null';
                     header('location: index.php?c=Login&a=index');
-                } */
+                }
             }
-        }
+        } */
         
     }
 
@@ -46,7 +46,7 @@ class LoginController{
         session_unset();
         $_SESSION['rol'] = 'null';
         $_SESSION['log'] = false;
-        header('location: index.php&c=Main');
+        header('location: index.php?c=Main');
         
     }
 }
