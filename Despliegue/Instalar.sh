@@ -12,8 +12,8 @@ PASSDB="debianDB"
 HOST=$(hostname -I)
 WWW="/var/www/html/"
 # Nombre del fichero de los datos en el proyecto 
-DATOS="Datos.sql"
-BBDD="ProyectoIESLQ"
+DATOS="Handyman.sql"
+BBDD="handyman"
 
 # Se toman los parámetros como USER y PASS de la BBDD
 if [ $# = 2 ];
