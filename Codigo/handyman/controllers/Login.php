@@ -18,6 +18,7 @@ class LoginController{
     
             //empty es un metodo de php para comprobar que no esta mandando datos vacios.
             if(empty($username) || empty($password)){
+                header('location: index.php?c=Login&a=index');
             }else{
                 $user = new Login;
                 if($user->getUser($username,$password)){
@@ -33,10 +34,11 @@ class LoginController{
                 }else{
                     $_SESSION['log'] = false;
                     $_SESSION['rol'] = 'null';
-                    $this->index();
+                    header('location: index.php?c=Login&a=index');
                 }
             }
         }
+        
     }
 
     function cerrar(){
