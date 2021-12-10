@@ -29,6 +29,25 @@
             header('Location: index.php?c=Usuario&a=mostrarUsuario&id='.$data['cliente']['idusuario']);
         }
 
+        public function modificarDomicilio($id){
+            $domicilio = new Domicilio_model();
+            $data["domicilio"] = $domicilio->get_domicilio($id);
+            require_once "views/domicilio/modificar.php";
+        }
+
+        public function modificar($id){
+            $domicilio = new Domicilio_model();
+            $data["domicilio"] = $domicilio->get_domicilio($id);
+            $calle = $_POST['calle'];
+            $numero = $_POST['numero'];
+            $piso = $_POST['piso'];
+            $puerta = $_POST['puerta'];
+            echo $id.'---'.$calle.'---'.$numero.'---'.$piso.'---'.$puerta;
+            $domicilio->modificarDomicilio($id, $calle, $numero, $piso, $puerta);
+            header('Location: index.php?c=Domicilio&a=mostrarDomicilio&id='.$id);
+
+        }
+
         public function eliminar($id){
             $domicilio = new Domicilio_model();
             $data["domicilio"] = $domicilio->get_domicilio($id);

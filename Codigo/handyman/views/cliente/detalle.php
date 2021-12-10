@@ -79,7 +79,7 @@
                         <td>
                             <a href="index.php?c=Domicilio&a=mostrarDomicilio&id=<?php echo $domicilio["iddomicilio"]; ?>"><i class="far fa-eye"></i></a>
                             &nbsp;&nbsp;
-                            <a href="index.php?c=Usuario&a=modificar&id=<?php echo $domicilio["iddomicilio"]; ?>"><i class="far fa-edit"></i></a>
+                            <a href="index.php?c=Domicilio&a=modificarDomicilio&id=<?php echo $domicilio["iddomicilio"]; ?>"><i class="far fa-edit"></i></a>
                             &nbsp;&nbsp;
                             <a data-bs-toggle="modal" data-bs-target="#confirmDom<?php echo $domicilio["iddomicilio"];?>"><i class="far fa-trash-alt"></i></a>
                             <!-- Modal -->

@@ -23,11 +23,11 @@ class Usuario_model{
         $userId = mysqli_insert_id($this->db);
         return $userId;
     }
-/*
-    public function modificar($id, $username, $nombre, $apellidos, $email, $password, $empresa){
-        $resultado = $this->db->query("UPDATE usuarios SET username='$username', nombre='$nombre', apellidos='$apellidos', email='$email', password='$password', nombre_empresa='$empresa' WHERE id_usuario='$id'");
+
+    public function modificarUsuario($id, $username, $nombre, $apellidos, $email, $telefono){
+        $resultado = $this->db->query("UPDATE usuario SET username='$username', nombre='$nombre', apellidos='$apellidos', email='$email', telefono='$telefono' WHERE idusuario='$id'");
     }
-*/
+
     public function eliminarUsuario($id){
         $resultado = $this->db->query("DELETE FROM usuario WHERE idusuario='$id'");
     } 

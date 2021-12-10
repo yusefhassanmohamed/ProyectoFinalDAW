@@ -24,6 +24,10 @@ class Producto_model{
         VALUES ('$nombre', '$marca', '$fecha_registro', '$iddomicilio')");
     }
 
+    public function modificarProducto($id, $nombre, $marca){
+        $resultado = $this->db->query("UPDATE producto SET nombre='$nombre', marca='$marca' WHERE idproducto='$id'");
+    }
+
     public function get_producto($id){
         $sql = "SELECT * FROM producto WHERE idproducto='$id' LIMIT 1";
         $resultado = $this->db->query($sql);

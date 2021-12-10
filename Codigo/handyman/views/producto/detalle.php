@@ -4,7 +4,7 @@
         <div class="col text-center"><h3><b>PRODUCTO: <?php echo $data["producto"]["nombre"].' '.$data["producto"]["marca"]; ?></b></h3>  </div>
     </div>
     <div class="row">
-        <div class="col text-center"><h5><a href="index.php?c=Producto&a=modificar&id=<?php echo $data["producto"]["idproducto"]; ?>"><i class="fas fa-edit m-2 p-2">Modificar</i></a></h5></div>
+        <div class="col text-center"><h5><a href="index.php?c=Producto&a=modificarProducto&id=<?php echo $data["producto"]["idproducto"]; ?>"><i class="fas fa-edit m-2 p-2">Modificar</i></a></h5></div>
         <div class="col text-center"><h5><a href="index.php?c=Producto&a=eliminar&id=<?php echo $data["producto"]["idproducto"]; ?>"><i class="fas fa-trash-alt m-2 p-2">Eliminar</i></a></h5></div>
     </div>
     <div class="row">

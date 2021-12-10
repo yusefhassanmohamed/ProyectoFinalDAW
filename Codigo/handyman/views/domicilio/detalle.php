@@ -4,7 +4,7 @@
         <div class="col text-center"><h3><b>DOMICILIO: <?php echo $data["domicilio"]["iddomicilio"].'/Cliente: '.$data["domicilio"]["idcliente"]; ?></b></h3>  </div>
     </div>
     <div class="row">
-        <div class="col text-center"><h5><a href="index.php?c=Domicilio&a=modificar&id=<?php echo $data["domicilio"]["iddomicilio"]; ?>"><i class="fas fa-edit m-2 p-2">Modificar</i></a></h5></div>
+        <div class="col text-center"><h5><a href="index.php?c=Domicilio&a=modificarDomicilio&id=<?php echo $data["domicilio"]["iddomicilio"]; ?>"><i class="fas fa-edit m-2 p-2">Modificar</i></a></h5></div>
         <div class="col text-center"><h5><a href="index.php?c=Domicilio&a=eliminar&id=<?php echo $data["domicilio"]["iddomicilio"]; ?>"><i class="fas fa-trash-alt m-2 p-2">Eliminar</i></a></h5></div>
     </div>
     <div class="row">
@@ -42,7 +42,7 @@
                         <td>
                             <a href="index.php?c=Producto&a=mostrarProducto&id=<?php echo $producto["idproducto"]; ?>"><i class="far fa-eye"></i></a>
                             &nbsp;&nbsp;
-                            <a href="index.php?c=Producto&a=modificar&id=<?php echo $producto["idproducto"]; ?>"><i class="far fa-edit"></i></a>
+                            <a href="index.php?c=Producto&a=modificarProducto&id=<?php echo $producto["idproducto"]; ?>"><i class="far fa-edit"></i></a>
                             &nbsp;&nbsp;
                             <a href="index.php?c=Producto&a=eliminar&id=<?php echo $producto["idproducto"]; ?>"><i class="far fa-trash-alt"></i></a>
                         </td>

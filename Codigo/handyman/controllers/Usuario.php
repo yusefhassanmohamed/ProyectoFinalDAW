@@ -4,7 +4,7 @@
             require_once "models/Usuario.php";
             require_once "models/Cliente.php";
             require_once "models/Tecnico.php";
-            //require_once "models/Gestor.php";
+            require_once "models/Gestor.php";
             require_once "models/Domicilio.php";
             require_once "models/Producto.php";
             require_once "models/Parte.php";
@@ -39,12 +39,52 @@
                 require_once "views/tecnico/detalle.php";
             }
             elseif($data["usuario"]["rol"]=='GESTOR'){
+                $gestor = new Gestor_model();
+                $data["gestor"] = $gestor->get_gestor($id);
                 require_once "views/gestor/detalle.php";
             }
             else{
                 $this->mostrar();
             }
         }
+
+        public function modificarUsuario($id){
+            $usuario = new Usuario_model();
+            $data["usuario"] = $usuario->get_usuario($id);
+            require_once "views/usuario/modificar.php";
+        }
+
+        public function modificar($id){
+            $usuario = new Usuario_model();
+            $data["usuario"] = $usuario->get_usuario($id);
+            $nombre = $_POST['nombre'];
+            $apellidos = $_POST['apellidos'];
+            $username = $_POST['username'];
+            $email = $_POST['email'];
+            $telefono = $_POST['telefono'];
+            if($this->comprobarExistenciaModificar($id, $username, $email)){
+                $usuario->modificarUsuario($id, $username, $nombre, $apellidos, $email, $telefono);
+                header('Location: index.php?c=Usuario&a=mostrar');
+            }else{
+                header('Location: index.php?c=Usuario&a=modificarUsuario&id='.$id);
+            }
+
+        }
+
+        public function comprobarExistenciaModificar($id, $username, $email){
+            $resultado = false;
+            $usuario = new Usuario_model();
+            $datos['usuarioAux'] = $usuario->get_usuario($id);
+            $usernameResult = $usuario->get_username($username);
+            $emailResult = $usuario->get_email($email);
+            //COMPROBAMOS QUE EL EMAIL Y EL USERNAME NO COINCIDA CON EL DE OTRO USUARIO
+             if((mysqli_num_rows($usernameResult)==0 || $username == $datos['usuarioAux']['username']) && (mysqli_num_rows($emailResult)==0 || $email == $datos['usuarioAux']['email'])){
+                $resultado = true;
+            } 
+            return $resultado;
+        }
+
+        /* if email != emailreturn || email == emailreturn => */
 
         public function eliminar($id){
             $usuario = new Usuario_model();
@@ -99,6 +139,12 @@
                 $tecnico->eliminarTecnico($data['tecnico']['idtecnico']);
                 $usuario->eliminarUsuario($id);
             }
+            else if($data["usuario"]["rol"]=='GESTOR'){
+                $gestor = new Gestor_model();
+                $data["gestor"] = $gestor->get_gestor($id);
+                $gestor->eliminarGestor($data['gestor']['idgestor']);
+                $usuario->eliminarUsuario($id);
+            }
             header('Location: index.php?c=Usuario&a=mostrar');
         }
 
@@ -119,7 +165,7 @@
             if($this->comprobarExistencia($username, $email, $dni)){
                 $usuario = new Usuario_model();
             }else{
-                echo 'errorrr';
+                header('Location: index.php?c=Usuario&a=nuevoUsuario');
             }
              
             

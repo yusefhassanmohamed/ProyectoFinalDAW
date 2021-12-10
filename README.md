@@ -87,29 +87,29 @@ Mapa web:
 Tenemos dos páginas comunes a todos los usuarios, que son la página de inicio y la de información sobre la empresa.
 Según el tipo de usuario, tendrá acceso a unas páginas u otras controlando el acceso y cambiando la barra de navegación.
 
-![Mapaweb](Imagenes/mapaWEB.png)
+![Mapaweb](./Imagenes/mapaWEB.png)
 
 ## Prototipo web y boceto de la estructura
 
-![Template](Imagenes/mockupPartials.png)
-![Home](Imagenes/home.png)
-![Sobrenosotros](Imagenes/sobreNosotros.png)
-![GestorUsuarios](Imagenes/gestionUsuarios.png)
-![GestorDetalleCliente](Imagenes/detalleCliente.png)
-![GestorDetalleGestor](Imagenes/detalleGestor.png)
-![GestorDetalleTecnico](Imagenes/detalleTecnico.png)
-![GestorDetalleDomicilio](Imagenes/detalleDomicilio.png)
-![GestorDetalleProducto](Imagenes/detalleProducto.png)
-![GestorDetalleParte](Imagenes/detalleParte.png)
-![GestorReportes](Imagenes/tecnicoReportes.png)
-![ClienteProductos](Imagenes/clienteProductos.png)
-![ClienteReportar](Imagenes/clienteReportar.png)
-![ClienteReportes](Imagenes/clienteReportes.png)
-![TecnicoPartes](Imagenes/tecnicoReportes.png)
-![TecnicoTrabajos](Imagenes/tecnicoTrabajos.png)
-![TecnicoDetalleTrabajo](Imagenes/tecnicoDetalleTrabajo.png)
-![FormularioRegistro](Imagenes/registro.png)
-![FormularioModificar](Imagenes/modificar.png)
+![Template](./Imagenes/mockupPartials.png)
+![Home](./Imagenes/home.png)
+![Sobrenosotros](./Imagenes/sobreNosotros.png)
+![GestorUsuarios](./Imagenes/gestionUsuarios.png)
+![GestorDetalleCliente](./Imagenes/detalleCliente.png)
+![GestorDetalleGestor](./Imagenes/detalleGestor.png)
+![GestorDetalleTecnico](./Imagenes/detalleTecnico.png)
+![GestorDetalleDomicilio](./Imagenes/detalleDomicilio.png)
+![GestorDetalleProducto](./Imagenes/detalleProducto.png)
+![GestorDetalleParte](./Imagenes/detalleParte.png)
+![GestorReportes](./Imagenes/tecnicoReportes.png)
+![ClienteProductos](./Imagenes/clienteProductos.png)
+![ClienteReportar](./Imagenes/clienteReportar.png)
+![ClienteReportes](./Imagenes/clienteReportes.png)
+![TecnicoPartes](./Imagenes/tecnicoReportes.png)
+![TecnicoTrabajos](./Imagenes/tecnicoTrabajos.png)
+![TecnicoDetalleTrabajo](./Imagenes/tecnicoDetalleTrabajo.png)
+![FormularioRegistro](./Imagenes/registro.png)
+![FormularioModificar](./Imagenes/modificar.png)
 ## Guía de estilos
 
 ### Colores corporativos
@@ -127,20 +127,20 @@ Es un logo que, al igual que el amarillo, transmite cercanía y ofrece ayuda al 
 
 El logo fue diseñado con Clip Studio Paint, un editor de imágenes profesional que permite la creación de imágenes vectoriales.
 
-![Logo](Imagenes/handymanIcon.png)
+![Logo](./Imagenes/handymanIcon.png)
 
 ## Planificación de tareas
 
-![DiagramaGantt](Imagenes/handymanGantt.png)
+![DiagramaGantt](./Imagenes/handymanGantt.png)
 
 ## Base de datos
 ### Diseño Entidad Relación de la BBDD
 
-![DiseñoER](Imagenes/modeloER.png)
+![DiseñoER](./Imagenes/modeloER.png)
 
 ### Modelo relacional BBDD
 
-![DiseñoER](Imagenes/ModeloRelacional.png)
+![DiseñoER](./Imagenes/ModeloRelacional.png)
 
 ### Script de creación BBDD
 
@@ -281,7 +281,7 @@ Descripción del proceso de carga de vuestra aplicación. Por ejemplo:
 > 
 > El proceso se muestra en el siguiente diagrama:
 >
->![ProcesoDeCarga](Imagenes/ProcesoDeCarga.png)
+>![ProcesoDeCarga](./Imagenes/ProcesoDeCarga.png)
 
 ## Jerarquía de directorios
 
@@ -289,7 +289,7 @@ Mostramos el árbol de directorios de nuestro proyecto WEB, tal y como lo visual
 
 Podemos usar la herramienta `tree -d` en entorno linux.
 
-![ArbolDirectorios](Imagenes/ArbolDirectorios.png)
+![ArbolDirectorios](./Imagenes/ArbolDirectorios.png)
 
 ### Contenido directorios
 
@@ -324,7 +324,7 @@ En base al apartado [Prototipo web y boceto de la estructura](#prototipo-web-y-b
 
 ### Estructura gráfica de la interface
 
-![EstructuraInterface](Imagenes/mockupPartials.png)
+![EstructuraInterface](./Imagenes/mockupPartials.png)
 
 # IMPLEMENTACIÓN
 
@@ -462,7 +462,7 @@ Se muestran diferentes pantallas que constituyen el desarrollo final de la aplic
 
 ## Página de Inicio
 
-![EjemploInicio](Imagenes/EjemploInicio.png)
+![EjemploInicio](./Imagenes/EjemploInicio.png)
 
 Y lo vamos realizando con todas las pantallas.
 # BIBLIOGRAFÍA

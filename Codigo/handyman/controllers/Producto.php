@@ -28,6 +28,23 @@
             header('Location: index.php?c=Domicilio&a=mostrarDomicilio&id='.$iddomicilio);
         }
 
+        public function modificarProducto($id){
+            $producto = new Producto_model();
+            $data["producto"] = $producto->get_producto($id);
+            require_once "views/producto/modificar.php";
+        }
+
+        public function modificar($id){
+            $producto = new Producto_model();
+            $data["producto"] = $producto->get_producto($id);
+            $nombre = $_POST['nombre'];
+            $marca = $_POST['marca'];
+            echo $id.'---'.$nombre.'---'.$marca;
+            $producto->modificarProducto($id, $nombre, $marca);
+            header('Location: index.php?c=Producto&a=mostrarProducto&id='.$id);
+
+        }
+
         public function mostrarProducto($id){
             $producto = new Producto_model();
             $domicilio = new Domicilio_model();

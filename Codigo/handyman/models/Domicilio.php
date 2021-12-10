@@ -19,6 +19,10 @@ class Domicilio_model{
         return $idcliente;
     }
 
+    public function modificarDomicilio($id, $calle, $numero, $piso, $puerta){
+        $resultado = $this->db->query("UPDATE domicilio SET calle='$calle', numero='$numero', piso='$piso', puerta='$puerta' WHERE iddomicilio='$id'");
+    }
+
     public function get_domicilio($id){
         $sql = "SELECT * FROM domicilio WHERE iddomicilio='$id'";
         $resultado = $this->db->query($sql);

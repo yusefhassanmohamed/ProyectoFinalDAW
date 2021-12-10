@@ -35,7 +35,7 @@
                         <td>
                             <a href="index.php?c=Usuario&a=mostrarUsuario&id=<?php echo $dato["idusuario"]; ?>"><i class="far fa-eye"></i></a>
                             &nbsp;&nbsp;
-                            <a href="index.php?c=Usuario&a=modificar&id=<?php echo $dato["idusuario"]; ?>"><i class="far fa-edit"></i></a>
+                            <a href="index.php?c=Usuario&a=modificarUsuario&id=<?php echo $dato["idusuario"]; ?>"><i class="far fa-edit"></i></a>
                             &nbsp;&nbsp;
                             <a href="index.php?c=Usuario&a=eliminar&id=<?php echo $dato["idusuario"]; ?>"><i class="far fa-trash-alt"></i></a>
                         </td>
