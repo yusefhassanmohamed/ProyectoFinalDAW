@@ -62,7 +62,7 @@
                         </td>
                         <td><?php echo $trabajo['fecha_aceptado']; ?></td>
                         <td>
-                            <a href="index.php?c=Trabajo&a=detalle&id=<?php echo $trabajo["idtrabajo"]; ?>"><i class="far fa-eye"></i></a>
+                            <a href="index.php?c=Trabajo&a=mostrarTrabajo&id=<?php echo $trabajo["idtrabajo"]; ?>"><i class="far fa-eye"></i></a>
                             &nbsp;&nbsp;
                             <a href="index.php?c=Trabajo&a=eliminar&id=<?php echo $trabajo["idtrabajo"]; ?>"><i class="far fa-trash-alt"></i></a>
                         </td>

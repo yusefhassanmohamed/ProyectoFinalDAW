@@ -42,6 +42,10 @@ class Trabajo_model{
         return $resultado;
     }
 
+    public function modificarTrabajo($id, $fecha_terminado, $observaciones){
+        $resultado = $this->db->query("UPDATE trabajo SET fecha_terminado='$fecha_terminado', observaciones='$observaciones' WHERE idtrabajo='$id'");
+    }
+
     public function eliminarTrabajo($id){
         $resultado = $this->db->query("DELETE FROM trabajo WHERE idtrabajo='$id'");
     }

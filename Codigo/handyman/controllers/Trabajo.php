@@ -35,24 +35,46 @@
             header('Location: index.php?c=Tecnico&a=mostrarTrabajos&id='.$data['tecnico']['idusuario']);
         }
 
-        public function mostrarParte($id){
+        public function mostrarTrabajo($id){
             $parte = new Parte_model();
+            $trabajo = new Trabajo_model();
             $producto = new Producto_model();
             $domicilio = new Domicilio_model();
             $cliente = new Cliente_model();
             $usuario = new Usuario_model();
-            $data["parte"] = $parte->get_parte($id);
+            $data["trabajo"] = $trabajo->get_trabajo($id);
+            $data["parte"] = $parte->get_parte($data["trabajo"]["idparte"]);
             $data["producto"] = $producto->get_producto($data['parte']['idproducto']);
             $data["domicilio"] = $domicilio->get_domicilio($data['producto']['iddomicilio']);
             $data["cliente"] = $cliente->get_cliente_id($data["parte"]['idcliente']);
             $data["usuario"] = $usuario->get_usuario($data["cliente"]['idusuario']);
             if($producto->get_producto($id)){
-                require_once "views/parte/detalle.php";
+                require_once "views/trabajo/detalle.php";
             }
             else{
                 header('Location: index.php?c=Usuario&a=mostrar');
                 /* $this->mostrar(); */
             }
+        }
+
+        public function terminarTrabajo($id){
+            /* Recojo datos */
+            $observaciones = $_POST['observaciones'];
+            $fecha_terminado = date('Y-m-d');
+            $trabajo = new Trabajo_model();
+            $data['trabajo'] = $trabajo->get_trabajo($id);
+            $idparte = $data['trabajo']['idparte'];
+            $tecnico = new Tecnico_model();
+            $parte = new Parte_model();
+            $data['parte'] = $parte->get_parte($idparte);
+
+            /* Inserto datos */
+            $trabajo->modificarTrabajo($id, $fecha_terminado, $observaciones);
+            if($trabajo->get_trabajo_parte($idparte)){
+                $parte->modificar_parte_estado($idparte, 'TERMINADO');
+            }
+
+            /* header('Location: index.php?c=Tecnico&a=mostrarTrabajos&id='.$data['tecnico']['idusuario']); */
         }
 
         public function eliminar($id){
@@ -63,6 +85,9 @@
             if($data['parte']['estado']=='OCUPADO'){
                 $trabajo->eliminarTrabajo($id);
                 $parte->modificar_parte_estado($data['parte']['idparte'], 'LIBRE');
+                header('Location: index.php?c=Tecnico&a=mostrarTrabajos&id='.$_SESSION['idusuario']);
+            }
+            else{
                 header('Location: index.php?c=Tecnico&a=mostrarTrabajos&id='.$_SESSION['idusuario']);
             }
         }
