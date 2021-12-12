@@ -6,7 +6,7 @@
 		</div>
 		<div class="carousel-inner">
 			<div class="carousel-item active">
-				<img alt="..." class="d-block w-100" src="https://i.postimg.cc/2S3RGgyP/4.jpg">
+				<img alt="..." class="d-block w-100" src="views/public/images/tecnico2.webp">
 				<div class="carousel-caption">
 					<h5 class="animated fadeInDown" style="animation-delay: 1s">WordPress Theme</h5>
 					<p class="animated fadeInUp d-none d-md-block" style="animation-delay: 2s">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime, nulla, tempore. Deserunt excepturi quas vero.</p>
@@ -14,7 +14,7 @@
 				</div>
 			</div>
 			<div class="carousel-item">
-				<img alt="..." class="d-block w-100" src="https://i.postimg.cc/2S3RGgyP/4.jpg">
+				<img alt="..." class="d-block w-100" src="views/public/images/tecnico1.jpg">
 				<div class="carousel-caption">
 					<h5 class="animated fadeInDown" style="animation-delay: 1s">Joomla Theme</h5>
 					<p class="animated fadeInUp d-none d-md-block" style="animation-delay: 2s">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime, nulla, tempore. Deserunt excepturi quas vero.</p>
@@ -22,7 +22,7 @@
 				</div>
 			</div>
 			<div class="carousel-item">
-				<img alt="..." class="d-block w-100" src="https://i.postimg.cc/2S3RGgyP/4.jpg">
+				<img alt="..." class="d-block w-100" src="views/public/images/tecnico3.jpg">
 				<div class="carousel-caption">
 					<h5 class="animated fadeInDown" style="animation-delay: 1s">Magento Theme</h5>
 					<p class="animated fadeInUp d-none d-md-block" style="animation-delay: 2s">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime, nulla, tempore. Deserunt excepturi quas vero.</p>

@@ -36,8 +36,8 @@
                 $usuario = new Usuario_model();
                 $idUser = $usuario->insertar($nombre, $apellidos, $username, $password, $email, $telefono, $dni, $rol);
 
-                $gestor = new Gestor_model();
-                $gestor->insertarGestor($numero_identificacion, $idUser);
+                $tecnico = new Tecnico_model();
+                $tecnico->insertarTecnico($numero_identificacion, $idUser);
                 header('Location: index.php?c=Usuario&a=mostrar');
             }else{
                 header('Location: index.php?c=Cliente&a=nuevoCliente');

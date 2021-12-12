@@ -177,8 +177,19 @@ a:hover{
     }
   }
 
-  /* LOGIN */
-  
+  /* FORM */
+  .oculto{
+    display: none;
+  }
+
+  .visible{
+    display: block;
+  }
+
+  .error{
+    color: red;
+  }
+
   .submit{
     background-color: var(--main-bg-color) !important;
   }
