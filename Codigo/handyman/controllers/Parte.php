@@ -55,6 +55,17 @@
                         $parte->insertarParte($id, $data['cliente']['idcliente'], $asunto, $descripcion, $fecha_parte);
                         header('Location: index.php?c=Cliente&a=mostrarProductos&id='.$_SESSION['idusuario']);
                     }else{
+                        $resultAux = true;
+                        while($aux = $parteAux->fetch_assoc()){
+                            if($aux['estado'] == 'LIBRE'){
+                                $resultAux = false;
+                                break;
+                            }
+                        }
+                        if($resultAux){
+                            $parte->insertarParte($id, $data['cliente']['idcliente'], $asunto, $descripcion, $fecha_parte);
+                        }
+                        
                         header('Location: index.php?c=Cliente&a=mostrarProductos&id='.$_SESSION['idusuario']);
                     }
 
