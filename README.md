@@ -268,26 +268,56 @@ CREATE TABLE `trabajo` (
 
 ### Consultas 
 
-Se incluyen y describen todas las consultas que se emplean en el desarrollo del proyecto.
+**Consultas de inserción:**
+Se han integrado consultas del tipo INSERT INTO para insertar determinados datos de las siguientes tablas:
+Usuario, Cliente, Técnico, Gestor, Producto, Domicilio, Parte y Trabajo.
+Un ejemplo de estas consultas puede ser la siguiente:
+
+***INSERT INTO usuario (nombre, apellidos, username, password, email, telefono, dni, rol)***
+
+**Consultas de eliminación:**
+Para eliminar determinados datos de una tabla, se ha utilizado DELETE FROM. Esta es una consulta simple, pues solo pasamos la clave primaria como parámetro para identificar el elemento que queremos borrar.
+
+***DELETE FROM usuario WHERE idusuario='$id'***
+
+**Consultas de modificación:**
+Para modificar determinados datos se ha utilizado UPDATE y se le ha pasado por parámetros aquellos datos que queremos modificar. En el caso de los usuarios, por ejemplo, hemos decidido que campos como DNI, que son únicos y no varían a lo largo del tiempo, no puedan modificarse. 
+
+***UPDATE usuario SET username='$username', nombre='$nombre', apellidos='$apellidos', email='$email', telefono='$telefono' WHERE idusuario='$id'***
+
+Otras tablas, como Parte, tienen un modificador que solo actualiza su estado:
+
+***UPDATE parte SET estado='$estado' WHERE idparte='$id'***
+
+**Consultas de lectura:**
+Dependiendo del tipo de datos que queramos recoger se han realizado unas consultas u otras. Podemos diferenciar dos tipos esencialmente:
+
+El primero, una consulta general de una tabla específica:
+***SELECT * FROM `usuario`***
+
+El segundo, consultas más específicas pasando por parámetros datos únicos para identificar elementos de una tabla en específico:
+***SELECT * FROM usuario WHERE username='$username' LIMIT 1***
+
 
 ## Validación de formularios
 
-Se incluyen todos los formularios que se emplean en la WEB y se especifican qué tipo de validación se va ha realizar.
+Para la validación de formularios se ha utilizado Javascript. Los formularios de la página son sencillos y muy similares, por lo que los scripts son muy parecidos entre sí.
+Se le han asignado a cada uno de los campos una expresión regular determinada (acorde con el tipo de campo y los requisitos). Tras esto, se ha verificado que cada campo sea rellenado correctamente, de lo contrario, el botón de submit no hará su trabajo. 
+Los formularios de la página son los de creación o inserción de elementos a las tablas (como cliente, producto, etc), el login, la modificación de datos personales y la creación de un reporte.
+
+Ejemplo de registro de técnico:
+![ProcesoDeCarga](./Imagenes/login.jpg)
+![ProcesoDeCarga](./Imagenes/scriptLogin.jpg)
+
 ## Proceso de carga
 
-Descripción del proceso de carga de vuestra aplicación. Por ejemplo:
+Al haber desarrollado la página mediante el patrón MVC, el proceso de carga es muy intuitivo e identificable. Tenemos un archivo principal (index.php) que se encargará de cargar los controladores requeridos para cada página o función. Estos controladores recibirán los datos del modelo en cuestión y devolverán una vista con dichos datos. 
+Esta manera de programar es utilizada por frameworks como Symfony o Laravel.
 
-> Al introducir la URL proyecto.com en el navegador, el fichero “index.php” carga la plantilla, dependiendo del idioma (Esp, Eus o Ing), cargará una plantilla u otra, por defecto “plantillaEsp.html”.
-> 
-> El proceso se muestra en el siguiente diagrama:
->
+Esta es una imagen con la estructura del proceso de carga de MVC:
 >![ProcesoDeCarga](./Imagenes/ProcesoDeCarga.png)
 
 ## Jerarquía de directorios
-
-Mostramos el árbol de directorios de nuestro proyecto WEB, tal y como lo visualizaríamos en la carpeta WWW.
-
-Podemos usar la herramienta `tree -d` en entorno linux.
 
 ![ArbolDirectorios](./Imagenes/ArbolDirectorios.png)
 
@@ -295,15 +325,32 @@ Podemos usar la herramienta `tree -d` en entorno linux.
 
 Breve explicación de lo que tenemos contenido en cada directorio. Por ejemplo:
 
-> `./` -> Contiene los ficheros principales “index.php”, “estilos.css”, “realizar_recomendacion.php”, “realizar_enviao.php”, “descargas.php” y “javascript.js”.
+> `./` -> Contiene el fichero principal “index.php”, que se encargará de cargar los controladores.
 > 
-> `descargas` -> Contiene los archivo PDF descargables desde el sitio web.
+> `config` -> Contiene un archivo php para la carga automática de controladores.
 > 
-> `Esp` -> Contiene las imágenes y las páginas web en español.
+> `controllers` -> Contiene los archivos de controladores.
 > 
-> `Eus` -> Contiene las imágenes y las páginas web en euskera.
+> `core` -> Contiene un archivo con la lógica de carga de controladores.
 > 
-> ...
+> `libs` -> Contiene el archivo para conectar la app con la base de datos.
+> 
+> `models` -> Contiene los archivos con los modelos de las distintas entidades.
+> 
+> `views` -> Contiene los directorios con las vistas.
+> 
+> `cliente, domicilio, gestor, login, main, parte, producto, tecnico, trabajo y usuario` -> Contienen los archivos con las vistas de cada directorio.
+> 
+> `partials` -> Contiene los archivos "estáticos" o que no varían de la página, como el header o el footer.
+> 
+> `public` -> Contiene los archivos necesarios para la implementación de las vistas.
+> 
+> `images` -> Contiene las imágenes que utilizaremos en la app.
+> 
+> `scripts` -> Contiene los archivos js.
+> 
+> `styles` -> Contiene los archivos css.
+> 
 
 ## Diseño de la interface
 
