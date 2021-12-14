@@ -5,6 +5,8 @@
             require_once "models/Cliente.php";
             require_once "models/Domicilio.php";
             require_once "models/Producto.php";
+            require_once "models/Parte.php";
+            require_once "models/Trabajo.php";
         }
 
         public function nuevoDomicilio($id){
@@ -55,6 +57,23 @@
             $data['cliente'] = $cliente->get_cliente_id($data["domicilio"]['idcliente']);
             $producto = new Producto_model();
             $data["productos"] = $producto->get_productos($id);
+            
+            $trabajo = new Trabajo_model();
+            $parte = new Parte_model();
+            $data["partes"] = $parte->get_all_partes();
+
+            foreach($data["partes"] as $parteAux){
+                foreach($data["productos"] as $productoAux){
+                    if($productoAux['idproducto'] == $parteAux['idproducto']){
+                        if($trabajoAux = $trabajo->get_trabajo_parte($parteAux['idparte'])){
+                            $trabajo->eliminarTrabajo($trabajoAux['idtrabajo']);
+                        }
+                        $parte->eliminarParte($parteAux['idparte']);
+                    }
+                }
+            }
+            
+            
 
             /* Elimino los productos asociados al domicilio */
             foreach($data["productos"] as $productoAux){

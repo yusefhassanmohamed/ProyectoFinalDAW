@@ -5,6 +5,8 @@
             require_once "models/Cliente.php";
             require_once "models/Domicilio.php";
             require_once "models/Producto.php";
+            require_once "models/Parte.php";
+            require_once "models/Trabajo.php";
         }
 
         public function nuevoProducto($id){
@@ -64,10 +66,24 @@
 
         public function eliminar($id){
             $producto = new Producto_model();
-            $data['domicilio'] = $producto->get_producto($id);
+            $data['producto'] = $producto->get_producto($id);
+
             if($producto->get_producto($id)){
+
+                $trabajo = new Trabajo_model();
+                $parte = new Parte_model();
+                $data["partes"] = $parte->get_all_partes();
+
+                foreach($data["partes"] as $parteAux){
+                    if($data['producto']['idproducto'] == $parteAux['idproducto']){
+                        if($trabajoAux = $trabajo->get_trabajo_parte($parteAux['idparte'])){
+                            $trabajo->eliminarTrabajo($trabajoAux['idtrabajo']);
+                        }
+                        $parte->eliminarParte($parteAux['idparte']);
+                    }
+                }
                 $producto->eliminarProducto($id);
-                header('Location: index.php?c=Domicilio&a=mostrarDomicilio&id='.$data['domicilio']['iddomicilio']);
+                header('Location: index.php?c=Domicilio&a=mostrarDomicilio&id='.$data['producto']['iddomicilio']);
             }
         }
     }
