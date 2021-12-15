@@ -109,8 +109,7 @@
                                 <i class="fas fa-user me-2"></i><?php echo $_SESSION['username'] ?>
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Profile</a></li>
-                                <li><a class="dropdown-item" href="#">Settings</a></li>
+                                <li><a class="dropdown-item" href="index.php?c=Usuario&a=modificarUsuarioPersonal&id=<?php echo $_SESSION['idusuario']; ?>">Perfil</a></li>
                                 <li><a class="dropdown-item" href="#">Logout</a></li>
                             </ul>
                         </li>
@@ -123,7 +122,7 @@
                                     <i class="fas fa-user me-2"></i>Login
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" href="#">Login</a></li>
+                                    <li><a class="dropdown-item" href="index.php?c=Login&a=index">Login</a></li>
                                 </ul>
                             </li>
                         <?php

@@ -1,3 +1,8 @@
+<?php 
+    if($_SESSION['rol']!='GESTOR'){
+        header('Location: index.php?c=Main');
+    } 
+?>
 <?php include 'views/partials/nav.php' ?>
 <div class="container">
         <div class="row justify-content-center mt-5">

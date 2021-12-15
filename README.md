@@ -32,7 +32,18 @@
   - [REQUISITO 1: Diseño responsive](#requisito-1-diseño-responsive)
     - [Funcionamiento](#funcionamiento)
     - [Ejemplo de código](#ejemplo-de-código)
-  - [REQUISITO 2: ...](#requisito-2-)
+  - [REQUISITO 2: Control de vista según usuario](#requisito-2-control-de-vista-según-usuario)
+    - [Funcionamiento](#funcionamiento-1)
+    - [Ejemplo de código](#ejemplo-de-código-1)
+  - [REQUISITO 3: Control de eliminación de datos](#requisito-3-control-de-eliminación-de-datos)
+    - [Funcionamiento](#funcionamiento-2)
+    - [Ejemplo de código](#ejemplo-de-código-2)
+  - [REQUISITO 4: Control de errores en formularios](#requisito-4-control-de-errores-en-formularios)
+    - [Funcionamiento](#funcionamiento-3)
+    - [Ejemplo de código](#ejemplo-de-código-3)
+  - [REQUISITO 5: Control de acceso de usuarios](#requisito-5-control-de-acceso-de-usuarios)
+    - [Funcionamiento](#funcionamiento-4)
+    - [Ejemplo de código](#ejemplo-de-código-4)
 - [PRUEBAS](#pruebas)
   - [Metodología de las pruebas](#metodología-de-las-pruebas)
 - [DESPLIEGUE](#despliegue)
@@ -389,29 +400,81 @@ La principal necesidad que existe para hacer un diseño «adaptable», es porque
 Para incluir un diseño responsive en la WEB se ha empleado CSS, y el framework Bootstrap.
 ### Ejemplo de código
 
-Para la zona de publicacione se ha empleado el siguiente código:
+Para el footer se ha empleado el siguiente código:
 
-```css
-.blog-pagination {
-    margin-bottom: 4rem;
-}
- 
-.blog-pagination > .btn {
-    border-radius: 2rem;
-}
- 
- 
-.blog-footer {
-    padding: 2.5rem 0;
-    color: #999;
-    text-align: center;
-    background-color: #f9f9f9;
-    border-top: .05rem solid #e5e5e5;
-}
-```
-## REQUISITO 2: ...
+div class="col-lg-4 col-md-6 mb-4 mb-md-0"
 
-Esto se realiza para cada uno de los requisitos de nuestra aplicación.
+Donde le decimos a ese trozo de código que ocupe un numero determinado de columnas según el tamaño de la pantalla
+
+## REQUISITO 2: Control de vista según usuario
+
+Para que haya un orden claro en la página y una distinción entre roles de usuario, se requiere implementar un control de vista para cada tipo de usuario.
+### Funcionamiento
+
+Para incluir este control en la WEB se ha empleado PHP y HTML.
+### Ejemplo de código
+
+
+if($_SESSION['rol']=='CLIENTE'):
+...
+elseif($_SESSION['rol']=='TECNICO'):
+...
+elseif($_SESSION['rol']=='GESTOR'):
+...
+
+## REQUISITO 3: Control de eliminación de datos
+
+Para evitar errores a la hora de eliminar datos se ha controlado mediante php y la lógica que se elimine antes los datos necesarios.
+### Funcionamiento
+
+Para incluir este control en la WEB se ha empleado PHP.
+### Ejemplo de código
+
+
+foreach($data["partes"] as $parteAux){
+  if($data['producto']['idproducto'] == $parteAux['idproducto']){
+    if($trabajoAux = $trabajo->get_trabajo_parte($parteAux['idparte'])){
+      $trabajo->eliminarTrabajo($trabajoAux['idtrabajo']);
+    }
+    $parte->eliminarParte($parteAux['idparte']);
+  }
+}
+
+## REQUISITO 4: Control de errores en formularios
+
+Es necesario validar cualquier dato que se introduzca por parte del cliente para controlar y dar una mejor experiencia al usuario.
+### Funcionamiento
+
+Para incluir este control en la WEB se ha empleado Javascript y el framework JQuery.
+### Ejemplo de código
+
+formulario.addEventListener('submit', (e)=>{
+        if(usernameValue && passwordValue){
+            $("#error_formulario").addClass("oculto");
+            $("#error_formulario").removeClass("activo");
+        }
+        else{
+            e.preventDefault();
+            console.log("errrooor");
+            $("#error_formulario").addClass("activo");
+            $("#error_formulario").removeClass("oculto");
+        }
+    });
+
+
+## REQUISITO 5: Control de acceso de usuarios
+
+Es necesario que haya un control de acceso de usuarios para que, por ejemplo, un cliente no pueda acceder a los mismos paneles que un técnico.
+### Funcionamiento
+
+Para incluir este control en la WEB se ha empleado PHP.
+### Ejemplo de código
+
+<?php 
+    if($_SESSION['rol']!='GESTOR'){
+        header('Location: index.php?c=Main');
+    } 
+?>
 
 # PRUEBAS
 

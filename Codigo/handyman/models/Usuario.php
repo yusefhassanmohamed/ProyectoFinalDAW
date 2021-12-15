@@ -28,6 +28,10 @@ class Usuario_model{
         $resultado = $this->db->query("UPDATE usuario SET username='$username', nombre='$nombre', apellidos='$apellidos', email='$email', telefono='$telefono' WHERE idusuario='$id'");
     }
 
+    public function modificarUsuarioPersonal($id, $password, $nombre, $apellidos, $email, $telefono){
+        $resultado = $this->db->query("UPDATE usuario SET password='$password', nombre='$nombre', apellidos='$apellidos', email='$email', telefono='$telefono' WHERE idusuario='$id'");
+    }
+
     public function eliminarUsuario($id){
         $resultado = $this->db->query("DELETE FROM usuario WHERE idusuario='$id'");
     } 

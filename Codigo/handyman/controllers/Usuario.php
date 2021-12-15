@@ -71,6 +71,29 @@
 
         }
 
+        public function modificarUsuarioPersonal($id){
+            $usuario = new Usuario_model();
+            $data["usuario"] = $usuario->get_usuario($id);
+            require_once "views/usuario/modificarPersonal.php";
+        }
+
+        public function modificarPersonal($id){
+            $usuario = new Usuario_model();
+            $data["usuario"] = $usuario->get_usuario($id);
+            $nombre = $_POST['nombre'];
+            $apellidos = $_POST['apellidos'];
+            $password = $_POST['password'];
+            $email = $_POST['email'];
+            $telefono = $_POST['telefono'];
+            if($this->comprobarExistenciaModificar($id, $password, $email)){
+                $usuario->modificarUsuarioPersonal($id, $password, $nombre, $apellidos, $email, $telefono);
+                header('Location: index.php?c=Main');
+            }else{
+                header('Location: index.php?c=Usuario&a=modificarUsuarioPersonal&id='.$id);
+            }
+
+        }
+
         public function comprobarExistenciaModificar($id, $username, $email){
             $resultado = false;
             $usuario = new Usuario_model();
