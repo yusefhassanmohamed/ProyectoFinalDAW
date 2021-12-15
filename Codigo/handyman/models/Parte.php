@@ -6,7 +6,7 @@ class Parte_model{
     }
 
     public function get_all_partes(){
-        $sql = "SELECT * FROM parte";
+        $sql = "SELECT * FROM parte ORDER BY estado ASC";
         $resultado = $this->db->query($sql);
 
         return $resultado;
@@ -35,7 +35,7 @@ class Parte_model{
     }
 
     public function get_partes($idcliente){
-        $sql = "SELECT * FROM parte WHERE idcliente='$idcliente'";
+        $sql = "SELECT * FROM parte WHERE idcliente='$idcliente' ORDER BY estado ASC";
         $resultado = $this->db->query($sql);
 
         return $resultado;

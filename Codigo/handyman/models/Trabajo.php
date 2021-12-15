@@ -36,7 +36,7 @@ class Trabajo_model{
     }
 
     public function get_trabajos($idtecnico){
-        $sql = "SELECT * FROM trabajo WHERE idtecnico='$idtecnico'";
+        $sql = "SELECT * FROM trabajo WHERE idtecnico='$idtecnico' ORDER BY fecha_terminado ASC";
         $resultado = $this->db->query($sql);
 
         return $resultado;
