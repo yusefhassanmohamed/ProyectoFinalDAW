@@ -30,8 +30,8 @@
                                     class="fas fa-tv me-2"></i>Productos</a>
                             <a href="index.php?c=Cliente&a=mostrarPartes&id=<?php echo $_SESSION['idusuario'] ?>" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                                     class="fas fa-bullhorn me-2"></i>Reportes</a>
-                            <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
-                                    class="fas fa-project-diagram me-2"></i>Contacto</a>
+                            <a href="index.php?c=Usuario&a=sobreNosotros" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                                    class="fas fa-project-diagram me-2"></i>Sobre nosotros</a>
                             <a href="index.php?c=login&a=cerrar" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold"><i
                                     class="fas fa-power-off me-2"></i>Logout</a>
                         </div>
@@ -45,8 +45,8 @@
                                     class="fas fa-bullhorn me-2"></i>Reportes</a>
                             <a href="index.php?c=Tecnico&a=mostrarTrabajos&id=<?php echo $_SESSION['idusuario']; ?>" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                                     class="fas fa-bullhorn me-2"></i>Trabajos</a>
-                            <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
-                                    class="fas fa-project-diagram me-2"></i>Contacto</a>
+                            <a href="index.php?c=Usuario&a=sobreNosotros" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                                    class="fas fa-project-diagram me-2"></i>Sobre nosotros</a>
                             <a href="index.php?c=login&a=cerrar" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold"><i
                                     class="fas fa-power-off me-2"></i>Logout</a>
                         </div>
@@ -58,12 +58,10 @@
                                         class="fas fa-home me-2"></i>Home</a>
                                 <a href="index.php?c=Usuario&a=mostrar" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                                         class="fas fa-users me-2"></i>Usuarios</a>
-                                <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
-                                        class="fas fa-tv me-2"></i>Productos</a>
                                 <a href="index.php?c=Parte&a=mostrar" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                                         class="fas fa-bullhorn me-2"></i>Reportes</a>
-                                <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
-                                        class="fas fa-project-diagram me-2"></i>Contacto</a>
+                                <a href="index.php?c=Usuario&a=sobreNosotros" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                                        class="fas fa-project-diagram me-2"></i>Sobre nosotros</a>
                                 <a href="index.php?c=login&a=cerrar" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold"><i
                                         class="fas fa-power-off me-2"></i>Logout</a>
                         </div>
@@ -73,8 +71,8 @@
                         <div class="list-group list-group-flush my-3">
                                     <a href="index.php?c=main" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                                             class="fas fa-home me-2"></i>Home</a>
-                                    <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
-                                            class="fas fa-project-diagram me-2"></i>Contacto</a>
+                                    <a href="index.php?c=Usuario&a=sobreNosotros" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                                            class="fas fa-project-diagram me-2"></i>Sobre nosotros</a>
                                     <a href="index.php?c=Login&a=index" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold"><i
                                             class="fas fa-power-off me-2"></i>Login</a>
                                 </div>

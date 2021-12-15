@@ -47,10 +47,20 @@
 - [PRUEBAS](#pruebas)
   - [Metodología de las pruebas](#metodología-de-las-pruebas)
 - [DESPLIEGUE](#despliegue)
+  - [SCRIPT DE DESPLIEGUE DE PROYECTO](#script-de-despliegue-de-proyecto)
+    - [Variables de entorno](#variables-de-entorno)
+    - [Nombre del fichero de los datos en el proyecto](#nombre-del-fichero-de-los-datos-en-el-proyecto)
+    - [Se toman los parámetros como USER y PASS de la BBDD](#se-toman-los-parámetros-como-user-y-pass-de-la-bbdd)
+    - [Copiamos el contenido de la carpeta proyecto a la página html](#copiamos-el-contenido-de-la-carpeta-proyecto-a-la-página-html)
+    - [Restauramos los datos de ejemplo a la BBDD](#restauramos-los-datos-de-ejemplo-a-la-bbdd)
+    - [Mostramos url de carga](#mostramos-url-de-carga)
 - [HERRAMIENTAS](#herramientas)
 - [LENGUAJES](#lenguajes)
 - [PRODUCTO](#producto-1)
   - [Página de Inicio](#página-de-inicio)
+  - [Página de Reportes](#página-de-reportes)
+  - [Página de Panel de administración](#página-de-panel-de-administración)
+  - [Página de Trabajos](#página-de-trabajos)
 - [BIBLIOGRAFÍA](#bibliografía)
 
 # TÍTULO DE PROYECTO
@@ -388,8 +398,6 @@ En base al apartado [Prototipo web y boceto de la estructura](#prototipo-web-y-b
 
 Descripción detallada de cada requisito, incluyendo su funcionamiento, validaciones si fuesen necesarias, y cualqier información relevante.
 
-**Por ejemplo:**
-
 ## REQUISITO 1: Diseño responsive
 
 Cada vez hay mas usuarios de Internet que utilizan dispositivos móviles para navegar. Si nos fijamos en la analítica de nuestra web, nos damos cuenta que cada vez hay un gran numero de visitas que provienen de dispositivos móviles, por lo que las resoluciones a las cuales vemos nuestro desarrollo son diferentes.
@@ -478,23 +486,57 @@ Para incluir este control en la WEB se ha empleado PHP.
 
 # PRUEBAS
 
-Breve descripción de cómo se han realizado las pruebas. Por ejemplo:
+## Metodología de las pruebas
 
 > Para la realización de las pruebas he montado una máquina virtual con linux + apache + mysql + php.
 > 
 > A lo largo del desarrollo he subido diferentes versiones y comprobado las diferentes funcionalidades.
-
-## Metodología de las pruebas
-
-Descripción de las pruebas que se han realizado para probar el funcionamiento de toda la aplicación. 
-
-Imprescindible comprobar el CRUD y el acceso público y privado de nuestra aplicación.
+> 
+> Se ha ido comprobando el correcto funcionamiento del CRUD durante el desarrollo del proytecto, así como introducir datos erróneos para poner a prueba la validación de formularios.
+> 
+> Durante el desarrollo, se ha comprobado la salida o entrada de datos mediante "echos" para imprimir por pantalla antes de que llegaran al modelo.
+> 
+> Para comprobar el aspecto de la aplicación en distintos tipos de dispositivos, se ha utilizado la herramienta para de desarrolladores de google. 
 
 # DESPLIEGUE
 
-Creación de un Script en BASH que permita el despliegue en automático de la aplicación en cualquier servidor linux, que contenga un Apache+PHP y una base de datos SQL.
+## SCRIPT DE DESPLIEGUE DE PROYECTO
 
-Se copia y describe el funcionamiento del script.
+### Variables de entorno
+Aquí declaramos las variables que utilizaremos en el script. Estas variables son:
+USERDB/PASSDB, que se refieren al usuario y contraseña de mysql.
+HOST, que es la IP de nuestra máquina virtual. WWW, la ruta donde estará instalada nuestra aplicación.
+
+>USERDB="debianDB"
+>PASSDB="debianDB"
+>HOST=$(hostname -I)
+>WWW="/var/www/html/"
+### Nombre del fichero de los datos en el proyecto 
+Creamos dos variables que nos indican el nombre del archivo SQL y el de nuestra base de datos. Esto se utilizará para crear la base de datos e importar el archivo SQL.
+
+>DATOS="Handyman.sql"
+>BBDD="handyman"
+
+### Se toman los parámetros como USER y PASS de la BBDD
+Aquí, con una simple condición, conseguimos que, si el usuario introduce dos parámetros a la hora de ejecutar el fichero.sh´, se recogerán dichos datos para la conexión a mysql. Primer parámetro para el usuario, segundo para la contraseña.
+>if [ $# = 2 ];
+>then
+>   USERDB=$1
+>   PASSDB=$2
+>fi
+
+### Copiamos el contenido de la carpeta proyecto a la página html
+Copiamos nuestro código, ubicado en la carpeta 'Codigo' de nuestro proyecto en la ruta guardada en la variable 'WWW'.
+>cp -r ../Codigo/ $WWW
+
+### Restauramos los datos de ejemplo a la BBDD
+Nos conectamos a mysql con el usuario y contraseña arriba indicados e importamos nuestra base de datos.
+>mysqladmin -u $USERDB -p$USERDB create $BBDD
+>mysql -u $USERDB -p$USERDB $BBDD < ../DataBase/$DATOS
+
+### Mostramos url de carga
+Una vez acabado todo el proceso anterior, mostramos por pantalla la ruta de acceso a nuestra aplicación, lista para usar.
+>echo "http://$HOST/Codigo/handyman/index.php"
 
 # HERRAMIENTAS
 
@@ -568,13 +610,23 @@ Descripción de los lenguajes y frameworks utilizados para el desarrollo del pro
 
 # PRODUCTO
 
-Se muestran diferentes pantallas que constituyen el desarrollo final de la aplicación:
-
 ## Página de Inicio
 
-![EjemploInicio](./Imagenes/EjemploInicio.png)
+![EjemploHome](./Imagenes/EjemploHome.png)
 
-Y lo vamos realizando con todas las pantallas.
+## Página de Reportes
+
+![EjemploReportes](./Imagenes/EjemploReportes.png)
+
+## Página de Panel de administración
+
+![EjemploPanelAdministracion](./Imagenes/EjemploPanelAdministracion.png)
+
+## Página de Trabajos
+
+![EjemploTrabajos](./Imagenes/EjemploTrabajos.png)
+
+
 # BIBLIOGRAFÍA
 
 Solución para casi todos los errores y dudas que se me han presentado:

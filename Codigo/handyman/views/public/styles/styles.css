@@ -11,6 +11,9 @@ html,body{
     top: 0;
     left: 0;
 }
+body{
+  background-image: url('../images/patron.jpg');
+}
 
 a{
     text-decoration: none;
@@ -74,13 +77,29 @@ a:hover{
 
   h4{
     color: var(--fourth-text-color);
-    background-color: var(--main-text-color);
+    background-color: rgba(46, 46, 46, 0.938);
     margin-top: 2%;
+    text-align: center;
   }
 
   h3{
+    width: fit-content;
     color: var(--main-text-color);
-    margin-top: 2%;
+    background-color: #e7e7e7bd;
+    padding: 0.5% 0.5%;
+    margin: 2% auto;
+  }
+
+  .sobre h2{
+    width: fit-content;
+    color: var(--fourth-text-color);
+    background-color: #340b29d7;
+    padding: 0.5% 0.5%;
+    margin: 2% auto;
+  }
+
+  .borde{
+    border-style: solid;
   }
   
   .primary-bg {
@@ -110,14 +129,16 @@ a:hover{
   
   #wrapper {
     overflow-x: hidden;
+    background-image: url('../images/patron.jpg');
     background-image: linear-gradient(
-      to right,
-      #f3edba,
-      #f0e9af,
-      #ece49a,
+      to bottom,
+      #f3edba98,
+      #f0e9afcb,
+      #ece49acd,
       #f0e68e,
-      #f1e67a
+      #f1e57a84
     );
+    
   }
   
   #sidebar-wrapper {

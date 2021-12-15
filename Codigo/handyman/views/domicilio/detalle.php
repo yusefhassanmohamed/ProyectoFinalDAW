@@ -10,7 +10,7 @@
     <div class="row">
         <div class="col"><h4>Dirección</h4></div>
     </div>
-    <div class="row">
+    <div class="row datos">
         <div class="col-md mb-2 campo"><b>Calle: </b><?php echo $data["domicilio"]["calle"]; ?></div>
         <div class="col-md mb-2 campo"><b>Numero: </b><?php echo $data["domicilio"]["numero"]; ?></div>
         <div class="col-md mb-2 campo"><b>Piso: </b><?php echo $data["domicilio"]["piso"]; ?></div>

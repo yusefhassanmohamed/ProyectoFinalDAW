@@ -8,14 +8,12 @@
           <h5 class="text-uppercase mb-4">Sobre nosotros</h5>
 
           <p>
-            At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
-            voluptatum deleniti atque corrupti.
+            Orgullosos de tener a los mejores técnicos del mercado. Con años de experiencia y un basto currículum, tus electrodomésticos estarán en las mejores manos.
           </p>
 
-          <p>
-            Blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas
-            molestias.
-          </p>
+          <a class="third-text" href="index.php?c=Usuario&a=sobreNosotros"><p>
+            Infórmate
+          </p></a>
 
           <div class="mt-4">
             <!-- Facebook -->

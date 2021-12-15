@@ -17,6 +17,11 @@
             require_once "views/usuario/index.php";
         }
 
+        public function sobreNosotros(){
+            require_once "views/main/sobrenosotros.php";
+        }
+
+
         public function mostrarUsuario($id){
             $usuario = new Usuario_model();
             $data["usuario"] = $usuario->get_usuario($id);
