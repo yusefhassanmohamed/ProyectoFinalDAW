@@ -1,3 +1,8 @@
+<?php 
+    if($_SESSION['rol']!='TECNICO'){
+        header('Location: index.php?c=Main');
+    } 
+?>
 <?php include 'views/partials/nav.php' ?>
 <div class="container">
     <div class="row">

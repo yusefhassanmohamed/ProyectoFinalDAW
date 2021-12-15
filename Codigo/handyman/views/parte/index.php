@@ -66,8 +66,6 @@
                         <td>
                             <a href="index.php?c=Parte&a=mostrarParte&id=<?php echo $parte["idparte"]; ?>"><i class="far fa-eye"></i></a>
                             &nbsp;&nbsp;
-                            <a href="index.php?c=Parte&a=modificar&id=<?php echo $parte["idparte"]; ?>"><i class="far fa-edit"></i></a>
-                            &nbsp;&nbsp;
                             <a href="index.php?c=Parte&a=eliminar&id=<?php echo $parte["idparte"]; ?>"><i class="far fa-trash-alt"></i></a>
                         </td>
                     </tr>

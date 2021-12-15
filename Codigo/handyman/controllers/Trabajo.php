@@ -32,7 +32,7 @@
                 $parte->modificar_parte_estado($idparte, 'OCUPADO');
             }
 
-            header('Location: index.php?c=Tecnico&a=mostrarTrabajos&id='.$data['tecnico']['idusuario']);
+            header('Location: index.php?c=Tecnico&a=mostrarTrabajos&id='.$idusuario);
         }
 
         public function mostrarTrabajo($id){
@@ -48,7 +48,7 @@
             $data["domicilio"] = $domicilio->get_domicilio($data['producto']['iddomicilio']);
             $data["cliente"] = $cliente->get_cliente_id($data["parte"]['idcliente']);
             $data["usuario"] = $usuario->get_usuario($data["cliente"]['idusuario']);
-            if($producto->get_producto($id)){
+            if($trabajo->get_trabajo($id)){
                 require_once "views/trabajo/detalle.php";
             }
             else{
@@ -74,7 +74,7 @@
                 $parte->modificar_parte_estado($idparte, 'TERMINADO');
             }
 
-            /* header('Location: index.php?c=Tecnico&a=mostrarTrabajos&id='.$data['tecnico']['idusuario']); */
+            header('Location: index.php?c=Tecnico&a=mostrarTrabajos&id='.$_SESSION['idusuario']);
         }
 
         public function eliminar($id){

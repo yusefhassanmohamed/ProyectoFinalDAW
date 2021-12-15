@@ -13,7 +13,6 @@
         else:
     ?>
     <div class="row">
-        <div class="col text-center"><h5><a href="index.php?c=Parte&a=modificar&id=<?php echo $data["parte"]["idparte"]; ?>"><i class="fas fa-edit m-2 p-2">Modificar</i></a></h5></div>
         <div class="col text-center"><h5><a data-bs-toggle="modal" data-bs-target="#confirmParte"><i class="fas fa-trash-alt m-2 p-2">Eliminar</i></a></h5></div>
         
         <div class="modal fade" id="confirmParte" tabindex="-1" aria-labelledby="eliminarParteModalLabel" aria-hidden="true">
